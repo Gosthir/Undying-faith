@@ -26,7 +26,6 @@ public class HeroKnight : MonoBehaviour
     private float m_delayToIdle = 0.0f;
     private float m_rollDuration = 8.0f / 14.0f;
     private float m_rollCurrentTime;
-    // Moje
 
     // Walka
     public Transform AttackPoint;
@@ -34,25 +33,13 @@ public class HeroKnight : MonoBehaviour
     public LayerMask enemyLayers;
     public int attackDamage = 20;
     public int maxHealth = 100;
-    int currentHealth;
-    // XP
-    public int PlayerLevel = 0;
-    public int PlayerXP = 0;
-    public int MaxXP = 0;
-    public int SkillPoints = 0;
-    //złoto
-    public int Gold = 20;
-    //Umiejętności
-    public bool Umiejetnosc1 = false;
-    public bool Umiejetnosc2 = false;
-    public bool Umiejetnosc3 = false;
-    public bool Umiejetnosc4 = false;
-    public bool Umiejetnosc5 = false;
-    public bool Umiejetnosc6 = false;
-    public bool Umiejetnosc7 = false;
-    public bool Umiejetnosc8 = false;
-    public bool Umiejetnosc9 = false;
-    public bool Umiejetnosc10 = false;
+    public int currentHealth;
+    //XP 
+    int PlayerXP = 0;
+    int MaxXP = 0;
+    int PlayerLevel = 0;
+    int SkillPoints = 0;
+
 
 
     // Use this for initialization
@@ -106,12 +93,21 @@ public class HeroKnight : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
+            var tempPos = AttackPoint.localPosition;
+            tempPos.x = 0.85f;
+            AttackPoint.localPosition = tempPos;
+
         }
 
         else if (inputX < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
+            var tempPos = AttackPoint.localPosition;
+            tempPos.x = -0.85f;
+
+
+            AttackPoint.localPosition = tempPos;
         }
 
         // Move

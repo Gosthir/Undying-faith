@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     int currentHealth;
     public int attackDamage = 20;
     public Animator animator;
+    bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead)
+            return;
         currentHealth -= damage;
         //HURT HERE
         animator.SetTrigger("Hurt");
@@ -35,16 +38,14 @@ public class Enemy : MonoBehaviour
         animator.SetBool("Dead", true);
         //Die animation
         Debug.Log("dead");
-
-        //Disable the enemy
-        
-        //GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        isDead = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+            return;
         Attack();
 
         void Attack()
