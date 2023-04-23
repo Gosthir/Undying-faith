@@ -51,11 +51,9 @@ public class Enemy : MonoBehaviour
         void Attack()
         {
             AttackPoint = transform.Find("AttackPoint");
-            // Wykrywanie przeciwników 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position,
-                                                                 attackRange,
-                                                                 enemyLayers);
-            // Obra¿enia
+            // Wykrywanie przeciwnikï¿½w 
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position,attackRange,enemyLayers);
+            // Obraï¿½enia
             foreach (Collider2D enemy in hitEnemies)
             {
                 Debug.Log("We hit " + enemy.name);
