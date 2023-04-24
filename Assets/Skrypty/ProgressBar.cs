@@ -8,6 +8,8 @@ public class ProgressBar : MonoBehaviour
     public Image ProgressBarImage;
     public int AllEnemies;
     public int DeadEnemies;
+    public int PlayerLevel = 1;
+    public int SkillPoints = 0;
 
     private void Start()
     {
@@ -23,6 +25,12 @@ public class ProgressBar : MonoBehaviour
     {
         // Call UpdateProgressBar every frame to update the progress bar value
         UpdateProgressBar();
+        if(AllEnemies==DeadEnemies)
+        {
+            DeadEnemies = 0;
+            SkillPoints++;
+            PlayerLevel++;
+        }
     }
 
     private void UpdateProgressBar()
