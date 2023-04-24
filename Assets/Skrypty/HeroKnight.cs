@@ -8,7 +8,7 @@ public class HeroKnight : MonoBehaviour
     [SerializeField] float m_rollForce = 6.0f;
     [SerializeField] bool m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
-
+    [SerializeField] private HealthBar _healthbar;
     public Enemy enemy;
     private Animator m_animator;
     private Rigidbody2D m_body2d;
@@ -55,11 +55,13 @@ public class HeroKnight : MonoBehaviour
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
         //moje
         currentHealth = maxHealth;
+        _healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
 
@@ -260,5 +262,7 @@ public class HeroKnight : MonoBehaviour
 
             }
         }
+        //Healthbar
+        _healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
 }
