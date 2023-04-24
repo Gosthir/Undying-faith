@@ -61,7 +61,7 @@ public class HeroKnight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
 
@@ -175,7 +175,7 @@ public class HeroKnight : MonoBehaviour
                 Debug.Log("We hit " + enemy.name);
                 enemy.GetComponent<Enemy>()
                      .TakeDamage(attackDamage);
-                XP();
+                
 
             }
         }
@@ -248,18 +248,6 @@ public class HeroKnight : MonoBehaviour
                 GameObject dust = Instantiate(m_slideDust, spawnPosition, gameObject.transform.localRotation) as GameObject;
                 // Turn arrow in correct direction
                 dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
-            }
-        }
-
-        void XP()
-        {
-            if (PlayerXP >= MaxXP)
-            {
-                PlayerLevel++;
-                SkillPoints++;
-                //PlayerXP = PlayerEXP - MaxXP;
-                MaxXP = MaxXP + 200;
-
             }
         }
         //Healthbar

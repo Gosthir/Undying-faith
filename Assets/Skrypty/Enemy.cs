@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public ProgressBar progressBar;
     public Transform AttackPoint;
     public float attackRange = 3f;
     public LayerMask enemyLayers;
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
         //Die animation
         Debug.Log("dead");
         isDead = true;
+        progressBar.DeadEnemies++;
     }
 
     // Update is called once per frame
@@ -66,4 +68,3 @@ public class Enemy : MonoBehaviour
         }
     }
 }
-
