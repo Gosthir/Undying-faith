@@ -200,7 +200,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 2
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1513694160}
-  AttackPoint: {fileID: 0}
+  AttackPoint: {fileID: 519030334}
   attackRange: 3
   enemyLayers:
     serializedVersion: 2
