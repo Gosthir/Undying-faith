@@ -27,12 +27,14 @@ public class EnemyAI : MonoBehaviour
     RaycastHit2D isGrounded;
     Seeker seeker;
     Rigidbody2D rb;
+    public Enemy Enemys;
+
+
 
     public void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
 
@@ -40,7 +42,10 @@ public class EnemyAI : MonoBehaviour
     {
         if (TargetInDistance() && followEnabled)
         {
-            PathFollow();
+            if (Enemys.isDead == false)
+            {
+                PathFollow();
+            }
         }
     }
 

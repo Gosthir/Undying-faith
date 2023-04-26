@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     int currentHealth;
     public int attackDamage = 20;
     public Animator animator;
-    bool isDead = false;
+    public bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {

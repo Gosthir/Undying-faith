@@ -237,6 +237,7 @@ MonoBehaviour:
   maxHealth: 100
   attackDamage: 20
   animator: {fileID: 178286621}
+  isDead: 0
 --- !u!95 &178286621 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6457512279750012050, guid: 3082b222a3719c24580d702a75aec8a1, type: 3}
@@ -265,6 +266,7 @@ MonoBehaviour:
   followEnabled: 1
   jumpEnabled: 1
   directionLookEnabled: 1
+  Enemys: {fileID: 178286620}
 --- !u!114 &178286624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,6 +1735,7 @@ MonoBehaviour:
   maxHealth: 100
   attackDamage: 20
   animator: {fileID: 1149775229}
+  isDead: 0
 --- !u!4 &1149775234 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4447131574885121281, guid: c74de3b98153eaa4aa19e1082b6e5a8d, type: 3}
@@ -1858,6 +1861,7 @@ MonoBehaviour:
   maxHealth: 300
   attackDamage: 40
   animator: {fileID: 1417475174}
+  isDead: 0
 --- !u!50 &1417475172
 Rigidbody2D:
   serializedVersion: 4
@@ -2253,6 +2257,7 @@ MonoBehaviour:
   maxHealth: 100
   attackDamage: 20
   animator: {fileID: 1672433598}
+  isDead: 0
 --- !u!95 &1672433598 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4367192655161509293, guid: cc152971a54cb6c4e9fd3ddaf323a1c2, type: 3}
