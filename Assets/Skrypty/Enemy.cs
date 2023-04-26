@@ -49,20 +49,20 @@ public class Enemy : MonoBehaviour
         if (isDead)
             return;
         Attack();
+    }
 
-        void Attack()
+    void Attack()
+    {
+        AttackPoint = transform.Find("AttackPoint");
+        // Wykrywanie przeciwnik�w 
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, enemyLayers);
+        // Obra�enia
+        foreach (Collider2D enemy in hitEnemies)
         {
-            AttackPoint = transform.Find("AttackPoint");
-            // Wykrywanie przeciwnik�w 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position,attackRange,enemyLayers);
-            // Obra�enia
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                Debug.Log("We hit " + enemy.name);
-                enemy.GetComponent<Enemy>()
-                     .TakeDamage(attackDamage);
+            Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<Enemy>()
+                 .TakeDamage(attackDamage);
 
-            }
         }
     }
 }
