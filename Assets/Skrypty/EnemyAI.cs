@@ -45,9 +45,11 @@ public class EnemyAI : MonoBehaviour
             if (Enemys.isDead == false)
             {
                 PathFollow();
+
             }
         }
     }
+
 
     private void UpdatePath()
     {

@@ -124,18 +124,6 @@ public class HeroKnight : MonoBehaviour
         m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
         m_animator.SetBool("WallSlide", m_isWallSliding);
 
-        //Death
-        void TakeDamage(int damage)
-        {
-            currentHealth -= damage;
-            //HURT HERE
-            if (currentHealth <= 0)
-            {
-                m_animator.SetBool("noBlood", m_noBlood); //ODEJMOWANIE 
-                m_animator.SetTrigger("Death");
-            }
-        }
-
 
         //Hurt
         if (Input.GetKeyDown("q") && !m_rolling)
@@ -252,5 +240,16 @@ public class HeroKnight : MonoBehaviour
         }
         //Healthbar
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        //HURT HERE
+        if (currentHealth <= 0)
+        {
+            m_animator.SetBool("noBlood", m_noBlood); //ODEJMOWANIE 
+            m_animator.SetTrigger("Death");
+        }
     }
 }

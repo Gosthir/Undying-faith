@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public Transform AttackPoint;
     public float attackRange = 3f;
     public LayerMask enemyLayers;
+    public LayerMask attackLayerMask;
     public int maxHealth = 100;
     int currentHealth;
     public int attackDamage = 20;
@@ -48,20 +49,21 @@ public class Enemy : MonoBehaviour
     {
         if (isDead)
             return;
-        Attack();
+        if(Input.GetKeyDown("l")) {
+            Attack();
+        }
     }
 
     void Attack()
     {
         AttackPoint = transform.Find("AttackPoint");
         // Wykrywanie przeciwnik�w 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, attackLayerMask);
         // Obra�enia
-        foreach (Collider2D enemy in hitEnemies)
+        foreach (Collider2D Heroknight in hitEnemies)
         {
-            Debug.Log("We hit " + enemy.name);
-            enemy.GetComponent<Enemy>()
-                 .TakeDamage(attackDamage);
+            Heroknight.GetComponent<HeroKnight>().TakeDamage(attackDamage);
+            animator.SetTrigger("Hurt");
 
         }
     }

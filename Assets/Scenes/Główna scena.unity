@@ -229,11 +229,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1513694160}
-  AttackPoint: {fileID: 0}
+  AttackPoint: {fileID: 519030334}
   attackRange: 3
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
   maxHealth: 100
   attackDamage: 20
   animator: {fileID: 178286621}
@@ -1732,6 +1735,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   maxHealth: 100
   attackDamage: 20
   animator: {fileID: 1149775229}
@@ -1858,6 +1864,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   maxHealth: 300
   attackDamage: 40
   animator: {fileID: 1417475174}
@@ -2254,6 +2263,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   maxHealth: 100
   attackDamage: 20
   animator: {fileID: 1672433598}
