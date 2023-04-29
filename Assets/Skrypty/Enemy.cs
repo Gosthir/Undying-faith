@@ -45,25 +45,25 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isDead)
             return;
-        if(Input.GetKeyDown("l")) {
-            Attack();
-        }
+        if (Input.GetKeyDown("l")) {
+            Attack();        }
     }
 
     void Attack()
     {
+        animator.SetTrigger("Isdoingdmg");
+
         AttackPoint = transform.Find("AttackPoint");
         // Wykrywanie przeciwnik�w 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, attackLayerMask);
         // Obra�enia
         foreach (Collider2D Heroknight in hitEnemies)
         {
-            Heroknight.GetComponent<HeroKnight>().TakeDamage(attackDamage);
-            animator.SetTrigger("Hurt");
+            Heroknight.GetComponent<HeroKnight>().TakeDamageHero(attackDamage);
 
         }
     }

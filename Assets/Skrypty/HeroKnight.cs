@@ -242,10 +242,11 @@ public class HeroKnight : MonoBehaviour
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamageHero(int damage)
     {
         currentHealth -= damage;
         //HURT HERE
+        m_animator.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
             m_animator.SetBool("noBlood", m_noBlood); //ODEJMOWANIE 
