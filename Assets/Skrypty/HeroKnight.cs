@@ -26,12 +26,13 @@ public class HeroKnight : MonoBehaviour
     private float m_delayToIdle = 0.0f;
     private float m_rollDuration = 8.0f / 14.0f;
     private float m_rollCurrentTime;
+    public bool m_IsAlive = true;
 
     // Walka
     public Transform AttackPoint;
-    public float attackRange = 3f;
+    public float attackRange;
     public LayerMask enemyLayers;
-    public int attackDamage = 20;
+    public int attackDamageHero = 20;
     public int maxHealth = 100;
     public int currentHealth;
     //XP 
@@ -161,7 +162,7 @@ public class HeroKnight : MonoBehaviour
             {
                 Debug.Log("We hit " + enemy.name);
                 enemy.GetComponent<Enemy>()
-                     .TakeDamage(attackDamage);
+                     .TakeDamage(attackDamageHero);
                 
 
             }
@@ -239,9 +240,12 @@ public class HeroKnight : MonoBehaviour
         }
         //Healthbar
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
+
+      
+        
     }
 
-    public void TakeDamageHero(int damage)
+     internal void TakeDamageHero(int damage)
     {
         currentHealth -= damage;
         //HURT HERE

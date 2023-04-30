@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a43a2d24096940499991a888d36655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   progressBar: {fileID: 1513694160}
   AttackPoint: {fileID: 519030334}
   attackRange: 3
@@ -236,9 +237,9 @@ MonoBehaviour:
     m_Bits: 64
   attackLayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   maxHealth: 100
-  attackDamage: 20
+  attackDamageEnemy: 20
   animator: {fileID: 178286621}
   isDead: 0
 --- !u!95 &178286621 stripped
@@ -1650,6 +1651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a43a2d24096940499991a888d36655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   progressBar: {fileID: 1513694160}
   AttackPoint: {fileID: 0}
   attackRange: 7
@@ -1660,7 +1662,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   maxHealth: 300
-  attackDamage: 40
+  attackDamageEnemy: 20
   animator: {fileID: 1417475174}
   isDead: 0
 --- !u!50 &1417475172
@@ -2049,6 +2051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a43a2d24096940499991a888d36655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   progressBar: {fileID: 1513694160}
   AttackPoint: {fileID: 0}
   attackRange: 3
@@ -2059,7 +2062,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   maxHealth: 100
-  attackDamage: 20
+  attackDamageEnemy: 20
   animator: {fileID: 1672433598}
   isDead: 0
 --- !u!95 &1672433598 stripped
@@ -2310,14 +2313,15 @@ MonoBehaviour:
   m_slideDust: {fileID: 1038168246061390451, guid: 8b8c8cc6774fb074cb9139cc631b108e, type: 3}
   _healthbar: {fileID: 1513694159}
   enemy: {fileID: 0}
+  m_IsAlive: 1
   AttackPoint: {fileID: 891268914}
   attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 8
-  attackDamage: 20
+  attackDamageHero: 20
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
 --- !u!58 &2070915160
 CircleCollider2D:
   m_ObjectHideFlags: 0
