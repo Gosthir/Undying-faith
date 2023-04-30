@@ -31,18 +31,16 @@ public class Abilites : MonoBehaviour
     //FORMA DUCHA
     private IEnumerator DisableCollidersForSeconds(float seconds)
     {
-        // Disable colliders for all layers except the "Floor", "Layer3", and "Layer7" layers
-        int floorLayer = LayerMask.NameToLayer("Floor");
-        int layer3 = LayerMask.NameToLayer("Enemies");
-        int layer7 = LayerMask.NameToLayer("Player");
-        int layerMask = ~(1 << floorLayer | 1 << layer3 | 1 << layer7);
+        // Disable collisions between the "Player" layer and the "Enemies" layer
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int enemyLayer = LayerMask.NameToLayer("Enemies");
+        int layerMask = ~(1 << playerLayer | 1 << enemyLayer);
         Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
         foreach (Collider2D collider in colliders)
         {
-            if (collider.gameObject.layer != floorLayer && collider.gameObject.layer != layer3 && collider.gameObject.layer != layer7)
+            if (collider.gameObject.layer == playerLayer || collider.gameObject.layer == enemyLayer)
             {
                 collider.enabled = false;
-                collider.gameObject.layer = floorLayer;
             }
         }
 
@@ -53,19 +51,23 @@ public class Abilites : MonoBehaviour
         spriteRenderer.color = spriteColor;
 
         // Wait for specified seconds
-        yield return new WaitForSeconds(2f + Forma_Ducha_Points);
+        yield return new WaitForSeconds(seconds);
 
         // Reset transparency of hero to 100%
         spriteColor.a = 1f;
         spriteRenderer.color = spriteColor;
 
-        // Enable colliders for all layers
+        // Enable collisions between the "Player" layer and the "Enemies" layer
         foreach (Collider2D collider in colliders)
         {
-            collider.enabled = true;
-            collider.gameObject.layer = 0;
+            if (collider.gameObject.layer == playerLayer || collider.gameObject.layer == enemyLayer)
+            {
+                collider.enabled = true;
+            }
         }
     }
+
+
 
     private void Update()
     {
@@ -75,6 +77,7 @@ public class Abilites : MonoBehaviour
             {
                 // Call coroutine to disable colliders for 5 seconds
                 StartCoroutine(DisableCollidersForSeconds(5f));
+                Physics2D.IgnoreLayerCollision(3, 10, false);
             }
 
 

@@ -61,8 +61,6 @@ public class HeroKnight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Physics2D.IgnoreLayerCollision(3, 7, true);
-
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
 
