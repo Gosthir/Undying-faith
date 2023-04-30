@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public HeroKnight player;
     public ProgressBar progressBar;
     public Transform AttackPoint;
-    public float attackRange = 3f;
+    public float attackRange;
     public LayerMask enemyLayers;
     public LayerMask attackLayerMask;
     public int maxHealth = 100;
     int currentHealth;
-    public int attackDamage = 20;
+    public int attackDamageEnemy = 20;
     public Animator animator;
     public bool isDead = false;
     // Start is called before the first frame update
@@ -49,22 +50,23 @@ public class Enemy : MonoBehaviour
     {
         if (isDead)
             return;
-        if (Input.GetKeyDown("l")) {
-            Attack();        }
+        if (Input.GetKeyDown("l"))
+        {
+            Attack();
+        }
     }
 
     void Attack()
     {
         animator.SetTrigger("Isdoingdmg");
-
-        AttackPoint = transform.Find("AttackPoint");
+        Transform transform1 = transform.Find("AttackPoint");
+        AttackPoint = transform1;
         // Wykrywanie przeciwnik�w 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, attackLayerMask);
+        Collider2D[] hitHero = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, attackLayerMask);
         // Obra�enia
-        foreach (Collider2D Heroknight in hitEnemies)
+        foreach (Collider2D player in hitHero)
         {
-            Heroknight.GetComponent<HeroKnight>().TakeDamageHero(attackDamage);
-
+            player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);
         }
     }
 }
