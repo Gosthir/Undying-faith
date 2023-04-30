@@ -1344,9 +1344,9 @@ GameObject:
   - component: {fileID: 1092792417}
   - component: {fileID: 1092792419}
   - component: {fileID: 1092792420}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1683,7 +1683,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1417475173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2334,6 +2334,34 @@ CircleCollider2D:
   m_Offset: {x: -0.026624262, y: 0.43338686}
   serializedVersion: 2
   m_Radius: 0.34919453
+--- !u!114 &2070915165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070915149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489c7713137374c4193db143e21c176b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Laser: 0
+  LaserPoints: 0
+  Odepchniecie: 0
+  Odepchniecie_Points: 0
+  Boski_Ogien: 0
+  Boski_Ogien_Points: 0
+  Forma_Ducha: 1
+  Forma_Ducha_Points: 0
+  Bariera: 0
+  Bariera_Points: 0
+  Atak_z_gory: 0
+  Atak_z_gory_Points: 0
+  Oslepienie: 0
+  Oslepienie_Points: 0
+  Meteoryt: 0
+  Meteoryt_Points: 0
 --- !u!1 &2133392278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,7 +2498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.107896395
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_LocalRotation.w
