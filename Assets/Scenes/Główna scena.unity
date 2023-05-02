@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a43a2d24096940499991a888d36655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAttackEnabled: 1
   player: {fileID: 0}
   progressBar: {fileID: 1513694160}
   AttackPoint: {fileID: 519030334}
@@ -1667,6 +1668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a43a2d24096940499991a888d36655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAttackEnabled: 1
   player: {fileID: 0}
   progressBar: {fileID: 1513694160}
   AttackPoint: {fileID: 0}
@@ -2067,6 +2069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a43a2d24096940499991a888d36655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAttackEnabled: 1
   player: {fileID: 0}
   progressBar: {fileID: 1513694160}
   AttackPoint: {fileID: 0}
@@ -2354,7 +2357,7 @@ CircleCollider2D:
   m_Offset: {x: -0.026624262, y: 0.43338686}
   serializedVersion: 2
   m_Radius: 0.34919453
---- !u!114 &2070915165
+--- !u!114 &2070915170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2366,22 +2369,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489c7713137374c4193db143e21c176b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Laser: 0
-  LaserPoints: 0
-  Odepchniecie: 0
-  Odepchniecie_Points: 0
-  Boski_Ogien: 0
-  Boski_Ogien_Points: 0
-  Forma_Ducha: 1
-  Forma_Ducha_Points: 0
-  Bariera: 0
-  Bariera_Points: 0
-  Atak_z_gory: 0
-  Atak_z_gory_Points: 0
-  Oslepienie: 0
-  Oslepienie_Points: 0
-  Meteoryt: 0
-  Meteoryt_Points: 0
+  laser: 0
+  laserPoints: 0
+  odepchniecie: 0
+  odepchnieciePoints: 0
+  boskiOgien: 0
+  boskiOgienPoints: 0
+  formaDucha: 1
+  formaDuchaPoints: 0
+  bariera: 0
+  barieraPoints: 0
+  AtakZGory: 0
+  atakZGoryPoints: 0
+  oslepienie: 0
+  oslepieniePoints: 0
+  meteoryt: 0
+  meteorytPoints: 0
 --- !u!1 &2133392278
 GameObject:
   m_ObjectHideFlags: 0

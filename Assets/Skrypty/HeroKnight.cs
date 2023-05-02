@@ -167,12 +167,6 @@ public class HeroKnight : MonoBehaviour
 
             }
         }
-        void OnDrawGizmosSelected()
-        {
-            if (AttackPoint == null)
-                return;
-            Gizmos.DrawWireSphere(AttackPoint.position, attackRange); //nie działa :(
-        }
         //block
         if (Input.GetMouseButtonDown(1) && !m_rolling)
         {

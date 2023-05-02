@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public bool isAttackEnabled = true;
     public HeroKnight player;
     public ProgressBar progressBar;
     public Transform AttackPoint;
@@ -63,7 +64,24 @@ public class Enemy : MonoBehaviour
             Attack();
         }
     }
-    void Attack()
+
+    public void Attack()
+    {
+        if (isAttackEnabled)
+        {
+            animator.SetTrigger("Isdoingdmg");
+            Transform transform1 = transform.Find("AttackPoint");
+            AttackPoint = transform1;
+            // Wykrywanie przeciwników 
+            Collider2D[] hitHero = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, attackLayerMask);
+            // Obrażenia
+            foreach (Collider2D player in hitHero)
+            {
+                player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);
+            }
+        }
+    }
+    /*void Attack()
     {
         animator.SetTrigger("Isdoingdmg");
         Transform transform1 = transform.Find("AttackPoint");
@@ -75,5 +93,5 @@ public class Enemy : MonoBehaviour
         {
             player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);
         }
-    }
+    } */
 }
