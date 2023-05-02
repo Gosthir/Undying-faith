@@ -56,6 +56,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D trig)
+    {
+        if (trig.gameObject.CompareTag("Player"))
+        {
+            Attack();
+        }
+    }
     void Attack()
     {
         animator.SetTrigger("Isdoingdmg");
