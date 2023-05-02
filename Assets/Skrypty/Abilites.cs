@@ -1,46 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Abilites : MonoBehaviour
+
+public class Abilities : MonoBehaviour
 {
-    public bool Laser = false;
-    public int LaserPoints = 0;
+    public bool laser = false;
+    public int laserPoints = 0;
 
-    public bool Odepchniecie = false;
-    public int Odepchniecie_Points = 0;
+    public bool odepchniecie = false;
+    public int odepchnieciePoints = 0;
 
-    public bool Boski_Ogien = false;
-    public int Boski_Ogien_Points = 0;
+    public bool boskiOgien = false;
+    public int boskiOgienPoints = 0;
 
-    public bool Forma_Ducha = false;
-    public int Forma_Ducha_Points = 0;
+    public bool formaDucha = false;
+    public int formaDuchaPoints = 0;
+    //k
+    private bool isFormaDuchaActive = false;
+    //k
 
-    public bool Bariera = false;
-    public int Bariera_Points = 0;
+    public bool bariera = false;
+    public int barieraPoints = 0;
 
-    public bool Atak_z_gory = false;
-    public int Atak_z_gory_Points = 0;
+    public bool atakZGory = false;
+    public int atakZGoryPoints = 0;
 
-    public bool Oslepienie = false;
-    public int Oslepienie_Points = 0;
+    public bool oslepienie = false;
+    public int oslepieniePoints = 0;
 
-    public bool Meteoryt = false;
-    public int Meteoryt_Points = 0;
+    public bool meteoryt = false;
+    public int meteorytPoints = 0;
 
+    private Rigidbody2D rb;
 
-    //FORMA DUCHA
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // FORMA DUCHA
     private IEnumerator DisableCollidersForSeconds(float seconds)
     {
         // Disable collisions between the "Player" layer and the "Enemies" layer
-        int playerLayer = LayerMask.NameToLayer("Player");
-        int enemyLayer = LayerMask.NameToLayer("Enemies");
-        int layerMask = ~(1 << playerLayer | 1 << enemyLayer);
-        Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
-        foreach (Collider2D collider in colliders)
+        if (!isFormaDuchaActive)
         {
-            if (collider.gameObject.layer == playerLayer || collider.gameObject.layer == enemyLayer)
+            int playerLayer = LayerMask.NameToLayer("Player");
+            int enemyLayer = LayerMask.NameToLayer("Enemies");
+            int layerMask = ~(1 << playerLayer | 1 << enemyLayer);
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+            foreach (Collider2D collider in colliders)
             {
-                collider.enabled = false;
+                if (collider.gameObject.layer == playerLayer || collider.gameObject.layer == enemyLayer)
+                {
+                    collider.enabled = false;
+                }
             }
         }
 
@@ -58,16 +71,21 @@ public class Abilites : MonoBehaviour
         spriteRenderer.color = spriteColor;
 
         // Enable collisions between the "Player" layer and the "Enemies" layer
-        foreach (Collider2D collider in colliders)
+        if (!isFormaDuchaActive)
         {
-            if (collider.gameObject.layer == playerLayer || collider.gameObject.layer == enemyLayer)
+            int playerLayer = LayerMask.NameToLayer("Player");
+            int enemyLayer = LayerMask.NameToLayer("Enemies");
+            int layerMask = ~(1 << playerLayer | 1 << enemyLayer);
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+            foreach (Collider2D collider in colliders)
             {
-                collider.enabled = true;
+                if (collider.gameObject.layer == playerLayer || collider.gameObject.layer == enemyLayer)
+                {
+                    collider.enabled = true;
+                }
             }
         }
     }
-
-
 
     private void Update()
     {
@@ -75,12 +93,46 @@ public class Abilites : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                // Call coroutine to disable colliders for 5 seconds
+                // Disable collisions and set transparency for 5 seconds
                 StartCoroutine(DisableCollidersForSeconds(5f));
-                Physics2D.IgnoreLayerCollision(3, 10, false);
+                isFormaDuchaActive = true;
+                rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
 
-
+            if (isFormaDuchaActive)
+            {
+                // Allow movement while in "Forma Ducha" mode
+                float horizontalInput = Input.GetAxis("Horizontal");
+                float verticalInput = Input.GetAxis("Vertical");
+                Vector2 movement = new Vector2(horizontalInput, verticalInput);
+                transform.Translate(movement * moveSpeed * Time.deltaTime);
+            }
         }
-    }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Laser = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Odepchniecie = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Boski_Ogien = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Bariera = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            Atak_z_gory = true;
+        }
+
+  
 }
