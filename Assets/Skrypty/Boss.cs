@@ -15,7 +15,7 @@ public class Boss : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     public int attackDamageEnemy = 20;
-    public Animator animator;
+    public Animator b_animator;
     public bool isDead = false;
     
     void Start()
@@ -32,7 +32,7 @@ public class Boss : MonoBehaviour
     }
     void Die()
     {
-        animator.SetBool("Dead", true);
+        b_animator.SetBool("Dead", true);
         isDead = true;
     }
     public void TakeDamage(int damage)
@@ -40,7 +40,7 @@ public class Boss : MonoBehaviour
         if (isDead)
             return;
         currentHealth -= damage;
-        animator.SetTrigger("Hurt");
+        b_animator.SetTrigger("hurt");
 
         if (currentHealth <= 0)
         {

@@ -807,7 +807,7 @@ MonoBehaviour:
     m_Bits: 0
   maxHealth: 500
   attackDamageEnemy: 20
-  animator: {fileID: 0}
+  b_animator: {fileID: 1417475174}
   isDead: 0
 --- !u!1 &1513694154
 GameObject:
