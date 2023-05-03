@@ -81,17 +81,4 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    /*void Attack()
-    {
-        animator.SetTrigger("Isdoingdmg");
-        Transform transform1 = transform.Find("AttackPoint");
-        AttackPoint = transform1;
-        // Wykrywanie przeciwnik�w 
-        Collider2D[] hitHero = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, attackLayerMask);
-        // Obra�enia
-        foreach (Collider2D player in hitHero)
-        {
-            player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);
-        }
-    } */
 }

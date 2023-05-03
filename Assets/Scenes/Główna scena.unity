@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttackEnabled: 1
   player: {fileID: 0}
-  progressBar: {fileID: 1513694160}
+  progressBar: {fileID: 0}
   AttackPoint: {fileID: 519030334}
   attackRange: 3
   enemyLayers:
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca1e168ae8430a479ce62a6471c9525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2070915155}
+  target: {fileID: 0}
   activateDistance: 50
   pathUpdateSeconds: 0.5
   speed: 1300
@@ -350,7 +350,7 @@ Transform:
   - {fileID: 1049557786}
   - {fileID: 398099121}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &226358110
 GameObject:
@@ -997,7 +997,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &863446218
 GameObject:
@@ -1069,7 +1069,7 @@ Transform:
   - {fileID: 178286619}
   - {fileID: 1417475170}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &889293170
 GameObject:
@@ -1382,7 +1382,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1092792419
 SpriteRenderer:
@@ -1864,7 +1864,7 @@ PrefabInstance:
     - target: {fileID: 7094501577497126487, guid: b0043456785cafd479065c9df03c79e3, type: 3}
       propertyPath: progressBar
       value: 
-      objectReference: {fileID: 1513694160}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0043456785cafd479065c9df03c79e3, type: 3}
 --- !u!1 &1513694154
@@ -1938,7 +1938,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 269240985}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2071,7 +2071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttackEnabled: 1
   player: {fileID: 0}
-  progressBar: {fileID: 1513694160}
+  progressBar: {fileID: 0}
   AttackPoint: {fileID: 0}
   attackRange: 3
   enemyLayers:
@@ -2470,7 +2470,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6855557595897071052
 PrefabInstance:
@@ -2509,7 +2509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_LocalPosition.x

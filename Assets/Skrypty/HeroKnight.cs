@@ -10,6 +10,7 @@ public class HeroKnight : MonoBehaviour
     [SerializeField] GameObject m_slideDust;
     [SerializeField] private HealthBar _healthbar;
     public Enemy enemy;
+    public Boss Bosss;
     private Animator m_animator;
     private Rigidbody2D m_body2d;
     private Sensor_HeroKnight m_groundSensor;
@@ -47,6 +48,7 @@ public class HeroKnight : MonoBehaviour
     void Start()
     {
         enemy = GameObject.FindObjectOfType<Enemy>(); // Find the Enemy game object in the scene 
+        Bosss = GameObject.FindObjectOfType<Boss>(); // Find the Enemy game object in the scene 
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
@@ -160,13 +162,16 @@ public class HeroKnight : MonoBehaviour
             // Obrażenia
             foreach (Collider2D enemy in hitEnemies)
             {
-                Debug.Log("We hit " + enemy.name);
-                enemy.GetComponent<Enemy>()
-                     .TakeDamage(attackDamageHero);
-                
-
+                if(enemy.CompareTag("Enemy")) { 
+                    Debug.Log("We hit " + enemy.name);
+                    enemy.GetComponent<Enemy>().TakeDamage(attackDamageHero);
+                }
             }
+            foreach (Collider2D bosss in hitEnemies)
+            {
+                bosss.GetComponent<Boss>().TakeDamage(attackDamageHero);
         }
+    }
         //block
         if (Input.GetMouseButtonDown(1) && !m_rolling)
         {
