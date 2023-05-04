@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca1e168ae8430a479ce62a6471c9525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 96415123}
   activateDistance: 50
   pathUpdateSeconds: 0.5
   speed: 1300
@@ -1635,7 +1635,7 @@ GameObject:
   - component: {fileID: 1417475171}
   m_Layer: 3
   m_Name: BOSS
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2332,6 +2332,7 @@ MonoBehaviour:
   m_slideDust: {fileID: 1038168246061390451, guid: 8b8c8cc6774fb074cb9139cc631b108e, type: 3}
   _healthbar: {fileID: 1513694159}
   enemy: {fileID: 0}
+  Bosss: {fileID: 0}
   m_IsAlive: 1
   AttackPoint: {fileID: 891268914}
   attackRange: 0.5
@@ -2373,9 +2374,12 @@ MonoBehaviour:
   laserPoints: 0
   odepchniecie: 0
   odepchnieciePoints: 0
-  boskiOgien: 0
-  boskiOgienPoints: 0
-  formaDucha: 1
+  boskiOgien: 1
+  boskiOgienPoints: 1
+  BurnDMG: 10
+  BurnDuration: 324
+  BurnRange: 10
+  formaDucha: 0
   formaDuchaPoints: 0
   bariera: 0
   barieraPoints: 0
@@ -2470,7 +2474,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6855557595897071052
 PrefabInstance:
@@ -2509,7 +2513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_LocalPosition.x
