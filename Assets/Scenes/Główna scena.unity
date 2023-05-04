@@ -229,8 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttackEnabled: 1
-  player: {fileID: 0}
-  progressBar: {fileID: 0}
+  player: {fileID: 2070915159}
+  progressBar: {fileID: 1513694160}
   AttackPoint: {fileID: 519030334}
   attackRange: 3
   enemyLayers:
@@ -1632,7 +1632,7 @@ GameObject:
   - component: {fileID: 1417475174}
   - component: {fileID: 1417475173}
   - component: {fileID: 1417475172}
-  - component: {fileID: 1417475171}
+  - component: {fileID: 1417475176}
   m_Layer: 3
   m_Name: BOSS
   m_TagString: Boss
@@ -1656,33 +1656,6 @@ Transform:
   m_Father: {fileID: 872709566}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1417475171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417475169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a43a2d24096940499991a888d36655c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAttackEnabled: 1
-  player: {fileID: 0}
-  progressBar: {fileID: 1513694160}
-  AttackPoint: {fileID: 0}
-  attackRange: 7
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  attackLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  maxHealth: 300
-  attackDamageEnemy: 20
-  animator: {fileID: 1417475174}
-  isDead: 0
 --- !u!50 &1417475172
 Rigidbody2D:
   serializedVersion: 4
@@ -1802,6 +1775,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1417475176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417475169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5906e68450238ea45a5dff9c74f40958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttackEnabled: 1
+  player: {fileID: 2070915159}
+  progressBar: {fileID: 1513694160}
+  AttackPoint: {fileID: 226358111}
+  attackRange: 0
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  maxHealth: 100
+  attackDamageEnemy: 20
+  b_animator: {fileID: 1417475174}
+  isDead: 0
 --- !u!1001 &1441389364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1862,9 +1862,17 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7094501577497126487, guid: b0043456785cafd479065c9df03c79e3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2070915159}
+    - target: {fileID: 7094501577497126487, guid: b0043456785cafd479065c9df03c79e3, type: 3}
+      propertyPath: AttackPoint
+      value: 
+      objectReference: {fileID: 228249770}
+    - target: {fileID: 7094501577497126487, guid: b0043456785cafd479065c9df03c79e3, type: 3}
       propertyPath: progressBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1513694160}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0043456785cafd479065c9df03c79e3, type: 3}
 --- !u!1 &1513694154
@@ -2070,9 +2078,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttackEnabled: 1
-  player: {fileID: 0}
-  progressBar: {fileID: 0}
-  AttackPoint: {fileID: 0}
+  player: {fileID: 2070915159}
+  progressBar: {fileID: 1513694160}
+  AttackPoint: {fileID: 672828428}
   attackRange: 3
   enemyLayers:
     serializedVersion: 2

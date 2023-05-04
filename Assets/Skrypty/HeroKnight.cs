@@ -169,8 +169,10 @@ public class HeroKnight : MonoBehaviour
             }
             foreach (Collider2D bosss in hitEnemies)
             {
+                if (bosss.CompareTag("Boss")) { 
                 bosss.GetComponent<Boss>().TakeDamage(attackDamageHero);
-        }
+                }
+            }
     }
         //block
         if (Input.GetMouseButtonDown(1) && !m_rolling)
