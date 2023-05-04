@@ -350,7 +350,7 @@ Transform:
   - {fileID: 1049557786}
   - {fileID: 398099121}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &226358110
 GameObject:
@@ -1069,7 +1069,7 @@ Transform:
   - {fileID: 178286619}
   - {fileID: 1417475170}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &889293170
 GameObject:
@@ -1382,7 +1382,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1092792419
 SpriteRenderer:
@@ -2347,7 +2347,6 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 8
-  attackDamageHero: 20
   maxHealth: 100
   currentHealth: 100
 --- !u!58 &2070915160
@@ -2378,25 +2377,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489c7713137374c4193db143e21c176b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BonusAttackDamagePoints: 2
+  BonusAttackDamagePointsMultiplayer: 10
+  BonusAttackDamage: 0
+  BonusHealth: 0
+  BonusHealthPoints: 3
+  BonusHealthPointsMultiplayer: 30
+  BonusSpeed: 0
+  BonusSpeedPoints: 0
+  BonusSpeedPointsMultiplayer: 0
   laser: 0
-  laserPoints: 0
-  odepchniecie: 0
+  odepchniecie: 1
   odepchnieciePoints: 0
+  "odepchni\u0119cieDMG": 0
   boskiOgien: 1
   boskiOgienPoints: 1
-  BurnDMG: 10
-  BurnDuration: 324
-  BurnRange: 10
-  formaDucha: 0
+  BurnDMG: 5
+  BurnDuration: 3
+  BurnRange: 3
+  formaDucha: 1
   formaDuchaPoints: 0
-  bariera: 0
-  barieraPoints: 0
   AtakZGory: 0
   atakZGoryPoints: 0
-  oslepienie: 0
-  oslepieniePoints: 0
   meteoryt: 0
   meteorytPoints: 0
+  meteorPrefab: {fileID: 0}
 --- !u!1 &2133392278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,7 +2526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_LocalPosition.x

@@ -3,7 +3,8 @@ using System.Collections;
 
 public class HeroKnight : MonoBehaviour
 {
-    [SerializeField] float m_speed = 4.0f;
+    private Abilities abilities;
+    public float m_speed = 4.0f;
     [SerializeField] float m_jumpForce = 7.5f;
     [SerializeField] float m_rollForce = 6.0f;
     [SerializeField] bool m_noBlood = false;
@@ -33,20 +34,28 @@ public class HeroKnight : MonoBehaviour
     public Transform AttackPoint;
     public float attackRange;
     public LayerMask enemyLayers;
-    public int attackDamageHero = 20;
+    public int AttackDamageHero { get; set; } = 20;
     public int maxHealth = 100;
     public int currentHealth;
     //XP 
     int PlayerXP = 0;
     int MaxXP = 0;
-    int PlayerLevel = 0;
-    int SkillPoints = 0;
+    public int TotalAttackDamage
+    {
+        get { return AttackDamageHero + abilities.BonusAttackDamage; }
+    }
+
+    
+
 
 
 
     // Use this for initialization
     void Start()
     {
+        abilities = GetComponent<Abilities>();
+        maxHealth = 100 + abilities.BonusHealth;
+        abilities = GetComponent<Abilities>();
         enemy = GameObject.FindObjectOfType<Enemy>(); // Find the Enemy game object in the scene 
         Bosss = GameObject.FindObjectOfType<Boss>(); // Find the Enemy game object in the scene 
         m_animator = GetComponent<Animator>();
@@ -60,7 +69,7 @@ public class HeroKnight : MonoBehaviour
         currentHealth = maxHealth;
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -164,13 +173,13 @@ public class HeroKnight : MonoBehaviour
             {
                 if(enemy.CompareTag("Enemy")) { 
                     Debug.Log("We hit " + enemy.name);
-                    enemy.GetComponent<Enemy>().TakeDamage(attackDamageHero);
+                    enemy.GetComponent<Enemy>().TakeDamage(TotalAttackDamage);
                 }
             }
             foreach (Collider2D bosss in hitEnemies)
             {
                 if (bosss.CompareTag("Boss")) { 
-                bosss.GetComponent<Boss>().TakeDamage(attackDamageHero);
+                bosss.GetComponent<Boss>().TakeDamage(TotalAttackDamage);
                 }
             }
     }

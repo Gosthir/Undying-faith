@@ -6,47 +6,86 @@ public class Abilities : MonoBehaviour
 {
     private HeroKnight heroKnight;
 
+    public int BonusAttackDamagePoints;
+    public int BonusAttackDamagePointsMultiplayer;
+    public int BonusAttackDamage;
+
+    public int BonusHealth;
+    public int BonusHealthPoints;
+    public int BonusHealthPointsMultiplayer;
+
+    public float BonusSpeed;
+    public float BonusSpeedPoints;
+    public float BonusSpeedPointsMultiplayer;
 
     public bool laser = false;
-    public int laserPoints = 0;
-
+    /*public int laserPoints = 0;
+    public GameObject laserPrefab;
+    public float laserSpeed;
+    public int laserDamage; */
 
     public bool odepchniecie = false;
     public int odepchnieciePoints = 0;
-
+    public int odepchniêcieDMG;
 
     public bool boskiOgien = false;
     public int boskiOgienPoints = 0;
-    public int BurnDMG = 10;
-    public int BurnDuration = 3;
+    public int BurnDMG;
+    public int BurnDuration;
     public float BurnRange;
-
 
     public bool formaDucha = false;
     public int formaDuchaPoints = 0;
     private bool isFormaDuchaActive = false;
 
-
-    public bool bariera = false;
-    public int barieraPoints = 0;
-
-
     public bool AtakZGory = false;
     public int atakZGoryPoints = 0;
 
-
-    public bool oslepienie = false;
-    public int oslepieniePoints = 0;
-
-
     public bool meteoryt = false;
     public int meteorytPoints = 0;
-
+    public GameObject meteorPrefab;
 
     private void Start()
     {
         heroKnight = GetComponent<HeroKnight>();
+
     }
+    
+
+    void FixedUpdate()
+    {
+        BonusAttackDamage = BonusAttackDamagePoints * BonusAttackDamagePointsMultiplayer;
+        BonusHealth = BonusHealthPoints * BonusHealthPointsMultiplayer;
+        BonusSpeed = BonusSpeedPoints * BonusSpeedPointsMultiplayer;
+        //BurnDMG = BurnDMG + boskiOgienPoints * 3;
+        //BurnDuration = BurnDuration + boskiOgienPoints;
+        odepchniêcieDMG = odepchnieciePoints * 10;
+    }
+
+    //Odepchniêcie 
+    private void PushEnemiesAway(Transform origin, float range, float force)
+    {
+        // Detect enemies within range
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(origin.position, range, heroKnight.enemyLayers);
+
+        // Push enemies away from the player
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.CompareTag("Enemy"))
+            {
+                Vector2 direction = enemy.transform.position - origin.position;
+                enemy.GetComponent<Rigidbody2D>().AddForce(direction.normalized * force, ForceMode2D.Impulse);
+                enemy.GetComponent<Enemy>().TakeDamage((int)odepchniêcieDMG);
+            }
+            else if (enemy.CompareTag("Boss"))
+            {
+                Vector2 direction = enemy.transform.position - origin.position;
+                enemy.GetComponent<Rigidbody2D>().AddForce(direction.normalized * force, ForceMode2D.Impulse);
+                enemy.GetComponent<Boss>().TakeDamage((int)odepchniêcieDMG);
+            }
+        }
+    }
+
 
     // FORMA DUCHA
     private IEnumerator DisableEnemyAttacksForSeconds(float seconds)
@@ -110,16 +149,26 @@ public class Abilities : MonoBehaviour
 
     private void Update()
     {
+
         Transform AttackPoint = heroKnight.AttackPoint;
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            laser = true;
+            if (laser)
+            {
+                /*GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+                laser.transform.right = transform.right;
+                Rigidbody2D laserRB = laser.GetComponent<Rigidbody2D>();
+                laserRB.velocity = laser.transform.right * laserSpeed; */
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            odepchniecie = true;
+           if (odepchniecie)
+            {
+                PushEnemiesAway(transform, 3f, 9f);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -129,9 +178,6 @@ public class Abilities : MonoBehaviour
                 // Get reference to attack point and enemy layers from heroKnight script
                 AttackPoint = heroKnight.AttackPoint;
                 LayerMask enemyLayers = heroKnight.enemyLayers;
-
-                // Set BurnDuration to 3
-                BurnDuration = 3;
 
                 // Start coroutine to repeat attack for specified duration
                 StartCoroutine(RepeatAttack(AttackPoint, enemyLayers, BurnDMG, BurnRange));
@@ -149,12 +195,27 @@ public class Abilities : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            bariera = true;
+            if (AtakZGory)
+            {
+
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            AtakZGory = true;
+            if (meteoryt)
+            {
+                Vector3 mousePos = Input.mousePosition;
+                mousePos.z = -Camera.main.transform.position.z; // Set the z position to the distance from the camera
+                Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+
+                // Instantiate the meteor prefab at the mouse position
+                GameObject meteor = Instantiate(meteorPrefab, worldPos, Quaternion.identity);
+
+                // Add a downward velocity to make the meteor fall
+                Rigidbody2D meteorRb = meteor.GetComponent<Rigidbody2D>();
+                meteorRb.velocity = new Vector2(0, -10f);
+            }
         }
     }
 }
