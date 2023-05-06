@@ -6,17 +6,15 @@ public class Abilities : MonoBehaviour
 {
     private HeroKnight heroKnight;
 
+    public bool BonusAttackDmgON = false;
     public int BonusAttackDamagePoints;
     public int BonusAttackDamagePointsMultiplayer;
     public int BonusAttackDamage;
 
+    public bool BonusHealthOn = false;
     public int BonusHealth;
     public int BonusHealthPoints;
     public int BonusHealthPointsMultiplayer;
-
-    public float BonusSpeed;
-    public float BonusSpeedPoints;
-    public float BonusSpeedPointsMultiplayer;
 
     public bool laser = false;
     /*public int laserPoints = 0;
@@ -54,9 +52,16 @@ public class Abilities : MonoBehaviour
 
     void FixedUpdate()
     {
-        BonusAttackDamage = BonusAttackDamagePoints * BonusAttackDamagePointsMultiplayer;
-        BonusHealth = BonusHealthPoints * BonusHealthPointsMultiplayer;
-        BonusSpeed = BonusSpeedPoints * BonusSpeedPointsMultiplayer;
+        if(BonusAttackDmgON)
+        {
+            BonusAttackDamage = BonusAttackDamagePoints * BonusAttackDamagePointsMultiplayer;
+        }
+        
+        if(BonusHealthOn)
+        {
+            BonusHealth = BonusHealthPoints * BonusHealthPointsMultiplayer;
+        }
+        
         //BurnDMG = BurnDMG + boskiOgienPoints * 3;
         //BurnDuration = BurnDuration + boskiOgienPoints;
         odepchniêcieDMG = odepchnieciePoints * 10;

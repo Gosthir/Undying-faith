@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ProgressBar : MonoBehaviour
 {
+    public HeroKnight heroknight;
     public Image ProgressBarImage;
     public int AllEnemies;
     public int DeadEnemies;
@@ -30,6 +31,7 @@ public class ProgressBar : MonoBehaviour
             DeadEnemies = 0;
             SkillPoints++;
             PlayerLevel++;
+            heroknight.currentHealth = heroknight.maxHealth;
         }
     }
 

@@ -37,15 +37,14 @@ public class HeroKnight : MonoBehaviour
     public int AttackDamageHero { get; set; } = 20;
     public int maxHealth = 100;
     public int currentHealth;
-    //XP 
-    int PlayerXP = 0;
-    int MaxXP = 0;
+    //DMG i Zdrowie
     public int TotalAttackDamage
     {
         get { return AttackDamageHero + abilities.BonusAttackDamage; }
     }
+    private int previousBonusHealth;
 
-    
+
 
 
 
@@ -69,7 +68,15 @@ public class HeroKnight : MonoBehaviour
         currentHealth = maxHealth;
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
-    
+    void FixedUpdate()
+    {
+        if (abilities.BonusHealth != previousBonusHealth)
+        {
+            currentHealth += abilities.BonusHealth - previousBonusHealth;
+            maxHealth += abilities.BonusHealth - previousBonusHealth;
+            previousBonusHealth = abilities.BonusHealth;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
