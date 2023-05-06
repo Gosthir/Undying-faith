@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ public class Abilities : MonoBehaviour
 
     public bool odepchniecie = false;
     public int odepchnieciePoints = 0;
-    public int odepchniêcieDMG;
+    public int odepchniÄ™cieDMG;
 
     public bool boskiOgien = false;
     public int boskiOgienPoints = 0;
@@ -59,10 +59,10 @@ public class Abilities : MonoBehaviour
         BonusSpeed = BonusSpeedPoints * BonusSpeedPointsMultiplayer;
         //BurnDMG = BurnDMG + boskiOgienPoints * 3;
         //BurnDuration = BurnDuration + boskiOgienPoints;
-        odepchniêcieDMG = odepchnieciePoints * 10;
+        odepchniÄ™cieDMG = odepchnieciePoints * 10;
     }
 
-    //Odepchniêcie 
+    //Odepchniï¿½cie 
     private void PushEnemiesAway(Transform origin, float range, float force)
     {
         // Detect enemies within range
@@ -75,13 +75,13 @@ public class Abilities : MonoBehaviour
             {
                 Vector2 direction = enemy.transform.position - origin.position;
                 enemy.GetComponent<Rigidbody2D>().AddForce(direction.normalized * force, ForceMode2D.Impulse);
-                enemy.GetComponent<Enemy>().TakeDamage((int)odepchniêcieDMG);
+                enemy.GetComponent<Enemy>().TakeDamage((int)odepchniÄ™cieDMG);
             }
             else if (enemy.CompareTag("Boss"))
             {
                 Vector2 direction = enemy.transform.position - origin.position;
                 enemy.GetComponent<Rigidbody2D>().AddForce(direction.normalized * force, ForceMode2D.Impulse);
-                enemy.GetComponent<Boss>().TakeDamage((int)odepchniêcieDMG);
+                enemy.GetComponent<Boss>().TakeDamage((int)odepchniÄ™cieDMG);
             }
         }
     }
@@ -118,7 +118,7 @@ public class Abilities : MonoBehaviour
             enemy.isAttackEnabled = true;
         }
     }
-    //BOSKI OGIEÑ
+    //BOSKI OGIEï¿½
     private IEnumerator RepeatAttack(Transform attackPoint, LayerMask enemyLayers, int damage, float BurnRange)
     {
         float elapsedTime = 0;
