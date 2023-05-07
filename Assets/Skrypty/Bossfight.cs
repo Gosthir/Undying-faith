@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,12 +9,15 @@ using UnityEngine.UIElements;
 
 public class Bossfight : MonoBehaviour
 {
+    [Header("Other")]
     public Animator B_animator;
     private int NumberOfAttack = 4;
+    public HeroKnight player;
+    public GameObject Laser1;
     // Start is called before the first frame update
     void Start()
     {
-
+    
     }
 
     // Update is called once per frame
@@ -21,7 +25,7 @@ public class Bossfight : MonoBehaviour
     {
         if (Input.GetKeyDown("p"))
         {
-            NumberOfAttack = Random.Range(0, 3);
+            NumberOfAttack = UnityEngine.Random.Range(0, 3);
         }
         switch (NumberOfAttack)
         {
@@ -35,6 +39,7 @@ public class Bossfight : MonoBehaviour
                 return;
             case 2:
                 B_animator.SetTrigger("Attack3");
+                Boss_Attack();
                 NumberOfAttack = 4;
                 return;
             case 3:
@@ -42,5 +47,10 @@ public class Bossfight : MonoBehaviour
                 NumberOfAttack = 4;
                 return;
         }
+    }
+
+    private void Boss_Attack()
+    {
+        Instantiate(Laser1, new Vector3(0, 0, 0), transform.rotation);
     }
 }
