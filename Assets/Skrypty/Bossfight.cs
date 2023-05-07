@@ -25,7 +25,9 @@ public class Bossfight : MonoBehaviour
     {
         if (Input.GetKeyDown("p"))
         {
-            NumberOfAttack = UnityEngine.Random.Range(0, 3);
+            B_animator.SetTrigger("Attack3");
+            Boss_Attack();
+            player.GetComponent<HeroKnight>().TakeDamageHero(10);
         }
         switch (NumberOfAttack)
         {
@@ -48,7 +50,6 @@ public class Bossfight : MonoBehaviour
                 return;
         }
     }
-
     private void Boss_Attack()
     {
         Instantiate(Laser1, new Vector3(0, 0, 0), transform.rotation);

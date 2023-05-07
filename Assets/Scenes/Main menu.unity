@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 1417475173}
   - component: {fileID: 1417475172}
   - component: {fileID: 1417475176}
+  - component: {fileID: 1417475177}
   m_Layer: 3
   m_Name: BOSS
   m_TagString: Boss
@@ -809,6 +810,21 @@ MonoBehaviour:
   attackDamageEnemy: 20
   b_animator: {fileID: 1417475174}
   isDead: 0
+--- !u!114 &1417475177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417475169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50acfb858133264d8f8a56c261c8d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  B_animator: {fileID: 1417475174}
+  player: {fileID: 2070915159}
+  Laser1: {fileID: 6685123206157148388, guid: d1404e34cd9bfb04f80f22baea5943e4, type: 3}
 --- !u!1 &1513694154
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +895,7 @@ Canvas:
   m_GameObject: {fileID: 1513694154}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -937,6 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38e2a04559dfea4f844f18cdc55d7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroknight: {fileID: 2070915159}
   ProgressBarImage: {fileID: 889293172}
   AllEnemies: 5
   DeadEnemies: 0
@@ -1096,14 +1113,13 @@ MonoBehaviour:
   m_slideDust: {fileID: 1038168246061390451, guid: 8b8c8cc6774fb074cb9139cc631b108e, type: 3}
   _healthbar: {fileID: 1513694159}
   enemy: {fileID: 0}
-  Bosss: {fileID: 0}
+  Bosss: {fileID: 1417475176}
   m_IsAlive: 1
   AttackPoint: {fileID: 891268914}
   attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 8
-  attackDamageHero: 20
   maxHealth: 100
   currentHealth: 100
 --- !u!58 &2070915160
@@ -1134,22 +1150,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489c7713137374c4193db143e21c176b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BonusAttackDmgON: 0
+  BonusAttackDamagePoints: 0
+  BonusAttackDamagePointsMultiplayer: 0
+  BonusAttackDamage: 0
+  BonusHealthOn: 0
+  BonusHealth: 0
+  BonusHealthPoints: 0
+  BonusHealthPointsMultiplayer: 0
   laser: 0
-  laserPoints: 0
   odepchniecie: 0
   odepchnieciePoints: 0
+  "odepchni\u0119cieDMG": 0
   boskiOgien: 0
   boskiOgienPoints: 0
+  BurnDMG: 0
+  BurnDuration: 0
+  BurnRange: 0
   formaDucha: 1
   formaDuchaPoints: 0
-  bariera: 0
-  barieraPoints: 0
   AtakZGory: 0
   atakZGoryPoints: 0
-  oslepienie: 0
-  oslepieniePoints: 0
   meteoryt: 0
   meteorytPoints: 0
+  meteorPrefab: {fileID: 0}
 --- !u!1 &2140898361
 GameObject:
   m_ObjectHideFlags: 0
