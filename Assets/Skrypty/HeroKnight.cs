@@ -11,7 +11,7 @@ public class HeroKnight : MonoBehaviour
     [SerializeField] GameObject m_slideDust;
     [SerializeField] private HealthBar _healthbar;
     public Enemy enemy;
-    public Boss Bosss;
+    public Boss Bosss; 
     private Animator m_animator;
     private Rigidbody2D m_body2d;
     private Sensor_HeroKnight m_groundSensor;
@@ -266,7 +266,7 @@ public class HeroKnight : MonoBehaviour
     {
         currentHealth -= damage;
         //HURT HERE
-        m_animator.SetTrigger("Hurt");
+        m_animator.SetTrigger("Block");
         if (currentHealth <= 0)
         {
             m_animator.SetBool("noBlood", m_noBlood); //ODEJMOWANIE 
