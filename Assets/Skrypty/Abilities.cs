@@ -17,10 +17,7 @@ public class Abilities : MonoBehaviour
     public int BonusHealthPointsMultiplayer;
 
     public bool laser = false;
-    /*public int laserPoints = 0;
-    public GameObject laserPrefab;
-    public float laserSpeed;
-    public int laserDamage; */
+    public int laserPoints = 0;
 
     public bool odepchniecie = false;
     public int odepchnieciePoints = 0;
@@ -36,8 +33,11 @@ public class Abilities : MonoBehaviour
     public int formaDuchaPoints = 0;
     private bool isFormaDuchaActive = false;
 
-    public bool AtakZGory = false;
-    public int atakZGoryPoints = 0;
+    public bool Dash = false;
+    public float dashSpeed;
+    public float dashDistance = 3f; 
+    public float dashDuration = 0.5f; 
+    public float dashBlinkInterval = 0.1f; 
 
     public bool meteoryt = false;
     public int meteorytPoints = 0;
@@ -123,7 +123,7 @@ public class Abilities : MonoBehaviour
             enemy.isAttackEnabled = true;
         }
     }
-    //BOSKI OGIE�
+    //BOSKI OGIEN
     private IEnumerator RepeatAttack(Transform attackPoint, LayerMask enemyLayers, int damage, float BurnRange)
     {
         float elapsedTime = 0;
@@ -150,6 +150,29 @@ public class Abilities : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             elapsedTime += 0.5f;
         }
+    }
+    //dash
+    IEnumerator Blink(Vector3 blinkPosition, float blinkDuration, float blinkInterval)
+    {
+        Renderer renderer = GetComponent<Renderer>();
+
+        // Set the player to invisible
+        renderer.enabled = false;
+
+        // Wait for the blink interval
+        yield return new WaitForSeconds(blinkInterval);
+
+        // Move the player to the desired position
+        transform.position = blinkPosition;
+
+        // Set the player to visible
+        renderer.enabled = true;
+
+        // Wait for the remaining blink duration
+        yield return new WaitForSeconds(blinkDuration - blinkInterval);
+
+        // Set the player to visible again
+        renderer.enabled = true;
     }
 
     private void Update()
@@ -200,9 +223,25 @@ public class Abilities : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            if (AtakZGory)
+            if (Dash)
             {
+                // Find the HeroKnight component attached to the player object
+                HeroKnight heroKnight = GetComponent<HeroKnight>();
 
+                // Determine the direction the player is facing
+                int facingDirection = heroKnight.m_facingDirection;
+
+                // Blink the player to the desired location
+                Vector3 blinkPosition = transform.position + facingDirection * Vector3.right * dashDistance;
+                StartCoroutine(Blink(blinkPosition, dashDuration, dashBlinkInterval));
+
+                // Move the player in the direction they are facing
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    Vector2 dashDirection = facingDirection * Vector2.right * dashSpeed;
+                    rb.velocity = dashDirection;
+                }
             }
         }
 

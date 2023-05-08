@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6323719953710832613, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6323719953710832613, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_Layer
@@ -272,6 +272,7 @@ MonoBehaviour:
   _healthbar: {fileID: 0}
   enemy: {fileID: 0}
   Bosss: {fileID: 0}
+  m_facingDirection: 1
   m_IsAlive: 1
   AttackPoint: {fileID: 891268914}
   attackRange: 0.5
@@ -292,16 +293,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489c7713137374c4193db143e21c176b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BonusAttackDmgON: 0
   BonusAttackDamagePoints: 2
   BonusAttackDamagePointsMultiplayer: 10
   BonusAttackDamage: 0
+  BonusHealthOn: 0
   BonusHealth: 0
   BonusHealthPoints: 3
   BonusHealthPointsMultiplayer: 30
-  BonusSpeed: 0
-  BonusSpeedPoints: 0
-  BonusSpeedPointsMultiplayer: 0
   laser: 0
+  laserPoints: 0
   odepchniecie: 1
   odepchnieciePoints: 0
   "odepchni\u0119cieDMG": 0
@@ -312,11 +313,28 @@ MonoBehaviour:
   BurnRange: 3
   formaDucha: 1
   formaDuchaPoints: 0
-  AtakZGory: 0
-  atakZGoryPoints: 0
+  Dash: 0
+  dashSpeed: 0
+  dashDistance: 3
+  dashDuration: 0.5
+  dashBlinkInterval: 0.1
   meteoryt: 0
   meteorytPoints: 0
   meteorPrefab: {fileID: 0}
+--- !u!114 &5843347969890173738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946916035480611888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ccf860789a7b2e4d86b826d931d51dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xp: {fileID: 0}
+  ability: {fileID: 0}
 --- !u!4 &8180561876714676327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
