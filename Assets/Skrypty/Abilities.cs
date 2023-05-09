@@ -16,29 +16,38 @@ public class Abilities : MonoBehaviour
     public int BonusHealthPoints;
     public int BonusHealthPointsMultiplayer;
 
+    public float laserTimer;
     public bool laser = false;
     public int laserPoints = 0;
 
+    public float odepchniecieTimer = 0f;
+    public float odepchniecieCooldown = 10f; // Cooldown duration in seconds
+    private float odepchniecieTimerCurrent = 0f; // Current cooldown timer
+    private bool odepchniecieReady = true; // Flag to indicate if ability is ready to be used
     public bool odepchniecie = false;
     public int odepchnieciePoints = 0;
     public int odepchnięcieDMG;
 
+    public float ogienTimer;
     public bool boskiOgien = false;
     public int boskiOgienPoints = 0;
     public int BurnDMG;
     public int BurnDuration;
     public float BurnRange;
 
+    public float duchTimer;
     public bool formaDucha = false;
     public int formaDuchaPoints = 0;
     private bool isFormaDuchaActive = false;
 
+    public float dashTimer;
     public bool Dash = false;
     public float dashSpeed;
     public float dashDistance = 3f; 
     public float dashDuration = 0.5f; 
-    public float dashBlinkInterval = 0.1f; 
+    public float dashBlinkInterval = 0.1f;
 
+    public float meteorytTimer;
     public bool meteoryt = false;
     public int meteorytPoints = 0;
     public GameObject meteorPrefab;
@@ -46,7 +55,7 @@ public class Abilities : MonoBehaviour
     private void Start()
     {
         heroKnight = GetComponent<HeroKnight>();
-
+        Debug.Log("Odepchniecie timer: " + odepchniecieTimer);
     }
     
 
@@ -66,10 +75,10 @@ public class Abilities : MonoBehaviour
         //BurnDuration = BurnDuration + boskiOgienPoints;
         odepchnięcieDMG = odepchnieciePoints * 10;
     }
-
-    //Odepchni�cie 
+    //Odepchniecie
     private void PushEnemiesAway(Transform origin, float range, float force)
     {
+        Debug.Log("PushEnemiesAway() method called!");
         // Detect enemies within range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(origin.position, range, heroKnight.enemyLayers);
 
@@ -177,7 +186,6 @@ public class Abilities : MonoBehaviour
 
     private void Update()
     {
-
         Transform AttackPoint = heroKnight.AttackPoint;
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -193,10 +201,19 @@ public class Abilities : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-           if (odepchniecie)
+            Debug.Log("1");
+            Debug.Log("Odepchniecie ability: " + odepchniecie);
+
+            if (odepchniecie && odepchniecieTimer <= 0f)
             {
+                Debug.Log("2");
                 PushEnemiesAway(transform, 3f, 9f);
+                odepchniecieTimer = odepchniecieCooldown;
             }
+        }
+        if (odepchniecieTimer > 0f)
+        {
+            odepchniecieTimer -= Time.deltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
