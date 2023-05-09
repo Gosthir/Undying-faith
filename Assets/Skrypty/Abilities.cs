@@ -17,18 +17,18 @@ public class Abilities : MonoBehaviour
     public int BonusHealthPointsMultiplayer;
 
     public float laserTimer;
+    public float laserCooldown;
     public bool laser = false;
     public int laserPoints = 0;
 
     public float odepchniecieTimer = 0f;
-    public float odepchniecieCooldown = 10f; // Cooldown duration in seconds
-    private float odepchniecieTimerCurrent = 0f; // Current cooldown timer
-    private bool odepchniecieReady = true; // Flag to indicate if ability is ready to be used
+    public float odepchniecieCooldown; // Cooldown duration in seconds
     public bool odepchniecie = false;
     public int odepchnieciePoints = 0;
     public int odepchnięcieDMG;
 
     public float ogienTimer;
+    public float ogienCooldown;
     public bool boskiOgien = false;
     public int boskiOgienPoints = 0;
     public int BurnDMG;
@@ -36,11 +36,13 @@ public class Abilities : MonoBehaviour
     public float BurnRange;
 
     public float duchTimer;
+    public float duchCooldown;
     public bool formaDucha = false;
     public int formaDuchaPoints = 0;
     private bool isFormaDuchaActive = false;
 
     public float dashTimer;
+    public float dashCooldown;
     public bool Dash = false;
     public float dashSpeed;
     public float dashDistance = 3f; 
@@ -48,6 +50,7 @@ public class Abilities : MonoBehaviour
     public float dashBlinkInterval = 0.1f;
 
     public float meteorytTimer;
+    public float meteorytCooldown;
     public bool meteoryt = false;
     public int meteorytPoints = 0;
     public GameObject meteorPrefab;
@@ -190,23 +193,24 @@ public class Abilities : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (laser)
+            if (laser && laserTimer <= 0f)
             {
                 /*GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
                 laser.transform.right = transform.right;
                 Rigidbody2D laserRB = laser.GetComponent<Rigidbody2D>();
                 laserRB.velocity = laser.transform.right * laserSpeed; */
+                laserTimer = laserCooldown;
             }
+        }
+        if (laserTimer > 0f)
+        {
+            laserTimer -= Time.deltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("1");
-            Debug.Log("Odepchniecie ability: " + odepchniecie);
-
             if (odepchniecie && odepchniecieTimer <= 0f)
             {
-                Debug.Log("2");
                 PushEnemiesAway(transform, 3f, 9f);
                 odepchniecieTimer = odepchniecieCooldown;
             }
@@ -218,7 +222,7 @@ public class Abilities : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (boskiOgien)
+            if (boskiOgien && ogienTimer <= 0f)
             {
                 // Get reference to attack point and enemy layers from heroKnight script
                 AttackPoint = heroKnight.AttackPoint;
@@ -226,21 +230,31 @@ public class Abilities : MonoBehaviour
 
                 // Start coroutine to repeat attack for specified duration
                 StartCoroutine(RepeatAttack(AttackPoint, enemyLayers, BurnDMG, BurnRange));
+                ogienTimer = ogienCooldown;
             }
+        }
+        if (ogienTimer > 0f)
+        {
+            ogienTimer -= Time.deltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if(formaDucha)
+            if(formaDucha && duchTimer <= 0f)
             {
                 StartCoroutine(DisableEnemyAttacksForSeconds(2f + formaDuchaPoints));
+                duchTimer = duchCooldown;
             }
 
+        }
+        if (duchTimer > 0f)
+        {
+            duchTimer -= Time.deltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            if (Dash)
+            if (Dash && dashTimer <= 0f)
             {
                 // Find the HeroKnight component attached to the player object
                 HeroKnight heroKnight = GetComponent<HeroKnight>();
@@ -258,13 +272,18 @@ public class Abilities : MonoBehaviour
                 {
                     Vector2 dashDirection = facingDirection * Vector2.right * dashSpeed;
                     rb.velocity = dashDirection;
+                    dashTimer = dashCooldown;
                 }
             }
+        }
+        if (dashTimer > 0f)
+        {
+            dashTimer -= Time.deltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            if (meteoryt)
+            if (meteoryt && meteorytTimer <= 0f)
             {
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = -Camera.main.transform.position.z; // Set the z position to the distance from the camera
@@ -276,7 +295,12 @@ public class Abilities : MonoBehaviour
                 // Add a downward velocity to make the meteor fall
                 Rigidbody2D meteorRb = meteor.GetComponent<Rigidbody2D>();
                 meteorRb.velocity = new Vector2(0, -10f);
+                dashTimer = dashCooldown;
             }
+        }
+        if (meteorytTimer > 0f)
+        {
+            meteorytTimer -= Time.deltaTime;
         }
     }
 }
