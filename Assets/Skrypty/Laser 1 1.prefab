@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d7c33d8f282d140b8e818d7b8e0f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  playerr: {fileID: 0}
   Dmg_Of_Attack3: 20

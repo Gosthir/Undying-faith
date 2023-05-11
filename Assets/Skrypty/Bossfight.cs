@@ -27,7 +27,6 @@ public class Bossfight : MonoBehaviour
         {
             B_animator.SetTrigger("Attack3");
             Boss_Attack();
-            player.GetComponent<HeroKnight>().TakeDamageHero(10);
         }
         switch (NumberOfAttack)
         {
