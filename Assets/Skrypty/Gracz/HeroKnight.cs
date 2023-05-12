@@ -266,7 +266,7 @@ public class HeroKnight : MonoBehaviour
     {
         currentHealth -= damage;
         //HURT HERE
-        m_animator.SetTrigger("Block");
+        m_animator.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
             m_animator.SetBool("noBlood", m_noBlood); //ODEJMOWANIE 
