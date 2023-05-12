@@ -21,6 +21,7 @@ public class Abilities : MonoBehaviour
     public bool laser = false;
     public int laserPoints = 0;
 
+
     public float odepchniecieTimer = 0f;
     public float odepchniecieCooldown; // Cooldown duration in seconds
     public bool odepchniecie = false;
