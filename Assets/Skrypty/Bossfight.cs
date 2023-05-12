@@ -13,7 +13,7 @@ public class Bossfight : MonoBehaviour
     public Animator B_animator;
     private int NumberOfAttack = 4;
     public HeroKnight player;
-    public GameObject Laser1;
+    public GameObject Laser;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +51,7 @@ public class Bossfight : MonoBehaviour
     }
     private void Boss_Attack()
     {
-        Instantiate(Laser1, new Vector3(0, 0, 0), transform.rotation);
+        Instantiate(Laser, new Vector3(0, 0, 0), transform.rotation);
+
     }
 }
