@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +18,9 @@ public class Enemy : MonoBehaviour
     public int attackDamageEnemy = 20;
     public Animator animator;
     public bool isDead = false;
+    public Vector2 PositionofEnemy;
+    public int bigger;
+    public int lesser;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,25 +56,25 @@ public class Enemy : MonoBehaviour
     {
         if (isDead)
             return;
-        if (Input.GetKeyDown("l"))
+        PositionofEnemy = transform.position - GameObject.FindGameObjectWithTag("Player").transform.position;
+        
+        if (PositionofEnemy[0] < bigger && PositionofEnemy[0] > lesser)
         {
-            Attack();
+            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("SkeletIdle"))
+            {
+                if(isAttackEnabled) { 
+                StartCoroutine(attack());
+                }
+            }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D trig)
-    {
-        if (trig.gameObject.CompareTag("Player"))
-        {
-            Attack();
-        }
-    }
-
-    public void Attack()
+    IEnumerator attack()
     {
         if (isAttackEnabled)
         {
             animator.SetTrigger("Isdoingdmg");
+            yield return new WaitForSeconds(1);
             Transform transform1 = transform.Find("AttackPoint");
             AttackPoint = transform1;
             // Wykrywanie przeciwników 
@@ -79,6 +84,8 @@ public class Enemy : MonoBehaviour
             {
                 player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);
             }
+            yield return new WaitForSeconds(1);
         }
+
     }
 }
