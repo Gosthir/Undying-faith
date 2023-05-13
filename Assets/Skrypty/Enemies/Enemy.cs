@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
         
         if (PositionofEnemy[0] < bigger && PositionofEnemy[0] > lesser)
         {
-            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("SkeletIdle"))
+            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 if(isAttackEnabled) { 
                 StartCoroutine(attack());
@@ -74,12 +74,17 @@ public class Enemy : MonoBehaviour
         if (isAttackEnabled)
         {
             animator.SetTrigger("Isdoingdmg");
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.6f);
             Transform transform1 = transform.Find("AttackPoint");
             AttackPoint = transform1;
             // Wykrywanie przeciwników 
             Collider2D[] hitHero = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, attackLayerMask);
             // Obrażenia
+            foreach (Collider2D player in hitHero)
+            {
+                player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);
+            }
+            yield return new WaitForSeconds(0.4f);
             foreach (Collider2D player in hitHero)
             {
                 player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);

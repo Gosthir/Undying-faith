@@ -131,7 +131,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Move
-        if (!m_rolling)
+        if (!m_rolling && m_IsAlive)
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
 
         //Set AirSpeed in animator
@@ -186,17 +186,17 @@ public class HeroKnight : MonoBehaviour
             }
     }
         //block
-        if (Input.GetMouseButtonDown(1) && !m_rolling)
+        if (Input.GetMouseButtonDown(1) && !m_rolling && m_IsAlive)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
         }
 
-        else if (Input.GetMouseButtonUp(1))
+        else if (Input.GetMouseButtonUp(1) && m_IsAlive)
             m_animator.SetBool("IdleBlock", false);
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && m_IsAlive)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
@@ -205,7 +205,7 @@ public class HeroKnight : MonoBehaviour
 
 
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
+        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && m_IsAlive)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -239,13 +239,16 @@ public class HeroKnight : MonoBehaviour
 
      internal void TakeDamageHero(int damage)
     {
+        if(m_IsAlive){ 
         currentHealth -= damage;
         //HURT HERE
         m_animator.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
-            m_animator.SetBool("noBlood", m_noBlood); //ODEJMOWANIE 
-            m_animator.SetTrigger("Death");
+            m_IsAlive = false;
+            m_grounded = false;
+            m_animator.SetBool("Dead",true);
+        }
         }
     }
 }
