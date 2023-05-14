@@ -137,16 +137,11 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Move
-        if (!m_rolling)
+        if (!m_rolling && m_IsAlive)
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
 
         //Set AirSpeed in animator
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
-
-        // -- Handle Animations --
-        //Wall Slide
-        m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
-        m_animator.SetBool("WallSlide", m_isWallSliding);
 
 
         //Hurt
@@ -197,17 +192,17 @@ public class HeroKnight : MonoBehaviour
             }
     }
         //block
-        if (Input.GetMouseButtonDown(1) && !m_rolling)
+        if (Input.GetMouseButtonDown(1) && !m_rolling && m_IsAlive)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
         }
 
-        else if (Input.GetMouseButtonUp(1))
+        else if (Input.GetMouseButtonUp(1) && m_IsAlive)
             m_animator.SetBool("IdleBlock", false);
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && m_IsAlive)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
@@ -216,7 +211,7 @@ public class HeroKnight : MonoBehaviour
 
 
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
+        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && m_IsAlive)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -241,26 +236,6 @@ public class HeroKnight : MonoBehaviour
             if (m_delayToIdle < 0)
                 m_animator.SetInteger("AnimState", 0);
         }
-
-        // Animation Events
-        // Called in slide animation.
-        void AE_SlideDust()
-        {
-            Vector3 spawnPosition;
-
-            if (m_facingDirection == 1)
-                spawnPosition = m_wallSensorR2.transform.position;
-            else
-                spawnPosition = m_wallSensorL2.transform.position;
-
-            if (m_slideDust != null)
-            {
-                // Set correct arrow spawn position
-                GameObject dust = Instantiate(m_slideDust, spawnPosition, gameObject.transform.localRotation) as GameObject;
-                // Turn arrow in correct direction
-                dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
-            }
-        }
         //Healthbar
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
 
@@ -270,13 +245,16 @@ public class HeroKnight : MonoBehaviour
 
      internal void TakeDamageHero(int damage)
     {
+        if(m_IsAlive){ 
         currentHealth -= damage;
         //HURT HERE
         m_animator.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
-            m_animator.SetBool("noBlood", m_noBlood); //ODEJMOWANIE 
-            m_animator.SetTrigger("Death");
+            m_IsAlive = false;
+            m_grounded = false;
+            m_animator.SetBool("Dead",true);
+        }
         }
     }
 }
