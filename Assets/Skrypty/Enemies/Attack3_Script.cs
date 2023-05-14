@@ -11,7 +11,14 @@ public class Attack3_Script : MonoBehaviour
     public int Dmg_Of_Attack3 = 10;
     private float timer = 0;
     private new float animation = 4;
+    AudioManager audioManager;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         playerr = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroKnight>();
@@ -21,6 +28,20 @@ public class Attack3_Script : MonoBehaviour
             if (playerr.CompareTag("Player"))
             {
                 playerr.GetComponent<HeroKnight>().TakeDamageHero(Dmg_Of_Attack3);
+                
+
+                int randomClipNumber = Random.Range(1, 3);
+                AudioClip attackClip = null;
+
+                switch (randomClipNumber)
+                {
+                    case 1:
+                        attackClip = audioManager.Atak1;
+                        break;
+                    case 2:
+                        attackClip = audioManager.Atak2;
+                        break;
+                }
             }
         }
 
