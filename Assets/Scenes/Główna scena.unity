@@ -1941,7 +1941,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889293170}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 --- !u!1 &915344266
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,8 +2094,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3082b222a3719c24580d702a75aec8a1, type: 3}
-=======
->>>>>>> 38aff77dba2cf1a9286b7d64aaa4cf0e8f6ca803
 --- !u!1 &928136832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2389,7 +2386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c41c8059d2ecd4d9a821194dc7ea0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 --- !u!82 &933818469
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2486,13 +2482,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-=======
---- !u!4 &933818468 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8180561876714676327, guid: 5d1ef0cda930df949aa66b8945982844, type: 3}
-  m_PrefabInstance: {fileID: 6513955642480505369}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> 38aff77dba2cf1a9286b7d64aaa4cf0e8f6ca803
 --- !u!1 &955761576
 GameObject:
   m_ObjectHideFlags: 0
@@ -5384,7 +5373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xp: {fileID: 1513694160}
   ability: {fileID: 933818466}
-<<<<<<< HEAD
 --- !u!1 &2120819600
 GameObject:
   m_ObjectHideFlags: 0
@@ -5513,13 +5501,6 @@ Transform:
   m_Father: {fileID: 915344268}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
---- !u!4 &2094818846 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 816590643243714187, guid: fa07b539b4777a443865e5deef33aa7b, type: 3}
-  m_PrefabInstance: {fileID: 153579113}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> 38aff77dba2cf1a9286b7d64aaa4cf0e8f6ca803
 --- !u!1 &2133392278
 GameObject:
   m_ObjectHideFlags: 0
