@@ -204,6 +204,7 @@ public class Abilities : MonoBehaviour
         {
             if (laser && laserTimer <= 0f)
             {
+                audioManager.PlaySFX(audioManager.Laser);
                 /*GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
                 laser.transform.right = transform.right;
                 Rigidbody2D laserRB = laser.GetComponent<Rigidbody2D>();
@@ -220,6 +221,7 @@ public class Abilities : MonoBehaviour
         {
             if (odepchniecie && odepchniecieTimer <= 0f)
             {
+                audioManager.PlaySFX(audioManager.Odepchniecie);
                 PushEnemiesAway(transform, 3f, 9f);
                 odepchniecieTimer = odepchniecieCooldown;
             }
@@ -251,6 +253,7 @@ public class Abilities : MonoBehaviour
         {
             if(formaDucha && duchTimer <= 0f)
             {
+                audioManager.PlaySFX(audioManager.Duch);
                 StartCoroutine(DisableEnemyAttacksForSeconds(2f + formaDuchaPoints));
                 duchTimer = duchCooldown;
             }
@@ -300,17 +303,9 @@ public class Abilities : MonoBehaviour
         {
             if (meteoryt && meteorytTimer <= 0f)
             {
-                Vector3 mousePos = Input.mousePosition;
-                mousePos.z = -Camera.main.transform.position.z; // Set the z position to the distance from the camera
-                Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
 
-                // Instantiate the meteor prefab at the mouse position
-                GameObject meteor = Instantiate(meteorPrefab, worldPos, Quaternion.identity);
-
-                // Add a downward velocity to make the meteor fall
-                Rigidbody2D meteorRb = meteor.GetComponent<Rigidbody2D>();
-                meteorRb.velocity = new Vector2(0, -10f);
-                dashTimer = dashCooldown;
+                audioManager.PlaySFX(audioManager.Meteor_Explosion);
+                meteorytTimer = meteorytCooldown;
             }
         }
         if (meteorytTimer > 0f)

@@ -151,6 +151,25 @@ public class HeroKnight : MonoBehaviour
         //Attack
         else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
         {
+            // Get a random attack audio clip from AudioManager
+            int randomClipNumber = Random.Range(1, 4);
+            AudioClip attackClip = null;
+
+            switch (randomClipNumber)
+            {
+                case 1:
+                    attackClip = audioManager.Atak1;
+                    break;
+                case 2:
+                    attackClip = audioManager.Atak2;
+                    break;
+                case 3:
+                    attackClip = audioManager.Atak3;
+                    break;
+            }
+
+            // Play the attack audio clip from AudioManager
+            audioManager.PlaySFX(attackClip);
             Attack(); //deklaruję funkcję
             m_currentAttack++;
 
