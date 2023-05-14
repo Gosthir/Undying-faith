@@ -5,6 +5,7 @@ using UnityEngine;
 public class Abilities : MonoBehaviour
 {
     private HeroKnight heroKnight;
+    private AudioManager audioManager;
 
     public bool BonusAttackDmgON = false;
     public int BonusAttackDamagePoints;
@@ -55,6 +56,13 @@ public class Abilities : MonoBehaviour
     public bool meteoryt = false;
     public int meteorytPoints = 0;
     public GameObject meteorPrefab;
+
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
 
     private void Start()
     {
@@ -257,8 +265,14 @@ public class Abilities : MonoBehaviour
         {
             if (Dash && dashTimer <= 0f)
             {
+
+
                 // Find the HeroKnight component attached to the player object
                 HeroKnight heroKnight = GetComponent<HeroKnight>();
+
+
+                audioManager.PlaySFX(audioManager.DashSound);
+
 
                 // Determine the direction the player is facing
                 int facingDirection = heroKnight.m_facingDirection;

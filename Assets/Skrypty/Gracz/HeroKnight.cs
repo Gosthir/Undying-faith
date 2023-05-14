@@ -45,6 +45,12 @@ public class HeroKnight : MonoBehaviour
     private int previousBonusHealth;
 
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
 
 
