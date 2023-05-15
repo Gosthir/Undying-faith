@@ -3,6 +3,7 @@ using System.Collections;
 
 public class HeroKnight : MonoBehaviour
 {
+    private int initialAttackDamageEnemy;
     private Abilities abilities;
     public float m_speed = 4.0f;
     [SerializeField] float m_jumpForce = 7.5f;
@@ -37,6 +38,8 @@ public class HeroKnight : MonoBehaviour
     public int AttackDamageHero { get; set; } = 20;
     public int maxHealth = 100;
     public int currentHealth;
+    public bool m_blockButtonHeld = false;
+    private bool m_isBlocking = false;
     //DMG i Zdrowie
     public int TotalAttackDamage
     {
@@ -58,6 +61,8 @@ public class HeroKnight : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+        initialAttackDamageEnemy = enemy.attackDamageEnemy;
         abilities = GetComponent<Abilities>();
         maxHealth = 100 + abilities.BonusHealth;
         abilities = GetComponent<Abilities>();
@@ -73,7 +78,21 @@ public class HeroKnight : MonoBehaviour
         //moje
         currentHealth = maxHealth;
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
+
+        // Find all game objects with the "Enemy" tag
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        // Set the initial attack damage for each enemy
+        foreach (GameObject enemyObj in enemies)
+        {
+            Enemy enemy = enemyObj.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                initialAttackDamageEnemy = enemy.attackDamageEnemy;
+            }
+        }
     }
+
     void FixedUpdate()
     {
         if (abilities.BonusHealth != previousBonusHealth)
@@ -81,11 +100,66 @@ public class HeroKnight : MonoBehaviour
             currentHealth += abilities.BonusHealth - previousBonusHealth;
             maxHealth += abilities.BonusHealth - previousBonusHealth;
             previousBonusHealth = abilities.BonusHealth;
+
+
+            
         }
     }
     // Update is called once per frame
     void Update()
     {
+        // Block
+        if (Input.GetMouseButtonDown(1) && !m_rolling && m_IsAlive)
+        {
+            m_animator.SetTrigger("Block");
+            m_animator.SetBool("IdleBlock", true);
+            m_isBlocking = true;
+
+            // Update the attack damage for all enemies with the "Enemy" tag
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemyObj in enemies)
+            {
+                Enemy enemy = enemyObj.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.attackDamageEnemy = Mathf.Max(initialAttackDamageEnemy - 15, 0);
+                }
+            }
+        }
+        else if (Input.GetMouseButtonUp(1) && m_IsAlive)
+        {
+            m_animator.SetBool("IdleBlock", false);
+            m_isBlocking = false;
+
+            // Reset the attack damage for all enemies with the "Enemy" tag
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemyObj in enemies)
+            {
+                Enemy enemy = enemyObj.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.attackDamageEnemy = initialAttackDamageEnemy;
+                }
+            }
+        }
+
+        // Take damage
+        if (enemy.attackDamageEnemy > 0)
+        {
+            if (m_isBlocking)
+            {
+                enemy.attackDamageEnemy -= 1;
+            }
+            else
+            {
+                // Health regen or idle state logic here
+            }
+        }
+
+
+
+
+
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
 
@@ -208,18 +282,14 @@ public class HeroKnight : MonoBehaviour
                 }
             }
     }
-        //block
-        if (Input.GetMouseButtonDown(1) && !m_rolling && m_IsAlive)
-        {
-            m_animator.SetTrigger("Block");
-            m_animator.SetBool("IdleBlock", true);
-        }
+        
+        
 
-        else if (Input.GetMouseButtonUp(1) && m_IsAlive)
+        if (Input.GetMouseButtonUp(1) && m_IsAlive)
             m_animator.SetBool("IdleBlock", false);
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && m_IsAlive)
+        if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && m_IsAlive)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
@@ -228,7 +298,7 @@ public class HeroKnight : MonoBehaviour
 
 
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && m_IsAlive)
+        if (Input.GetKeyDown("space") && m_grounded && !m_rolling && m_IsAlive)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -238,7 +308,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         //Run
-        else if (Mathf.Abs(inputX) > Mathf.Epsilon)
+       if (Mathf.Abs(inputX) > Mathf.Epsilon)
         {
             // Reset timer
             m_delayToIdle = 0.05f;

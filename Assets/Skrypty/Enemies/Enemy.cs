@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public LayerMask attackLayerMask;
     public int maxHealth = 100;
     int currentHealth;
-    public int attackDamageEnemy = 20;
+    public int attackDamageEnemy = 4;
     public Animator animator;
     public bool isDead = false;
     public Vector2 PositionofEnemy;
