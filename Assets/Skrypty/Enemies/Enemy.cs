@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         if (PositionofEnemy[0] < bigger && PositionofEnemy[0] > lesser)
         {
             animator.SetInteger("AnimState", 0);
-            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || this.animator.GetCurrentAnimatorStateInfo(0).IsName("MoveEnemy") && isDead ==false)
             {
                 if(isAttackEnabled) { 
                 StartCoroutine(attack());
