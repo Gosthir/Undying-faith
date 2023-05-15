@@ -492,7 +492,7 @@ PrefabInstance:
     - target: {fileID: 5965208924067201855, guid: fa07b539b4777a443865e5deef33aa7b, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 933818470}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa07b539b4777a443865e5deef33aa7b, type: 3}
 --- !u!1 &225914744
@@ -2329,6 +2329,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &933818470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8180561876714676327, guid: 5d1ef0cda930df949aa66b8945982844, type: 3}
+  m_PrefabInstance: {fileID: 6513955642480505369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &955761576
 GameObject:
   m_ObjectHideFlags: 0
@@ -4633,7 +4638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca1e168ae8430a479ce62a6471c9525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 933818470}
   activateDistance: 100
   pathUpdateSeconds: 0.5
   speed: 700

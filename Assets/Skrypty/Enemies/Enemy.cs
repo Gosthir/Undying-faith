@@ -73,6 +73,7 @@ public class Enemy : MonoBehaviour
     {
         if (isAttackEnabled)
         {
+            isAttackEnabled = false;
             animator.SetTrigger("Isdoingdmg");
             yield return new WaitForSeconds(0.6f);
             Transform transform1 = transform.Find("AttackPoint");
@@ -89,7 +90,8 @@ public class Enemy : MonoBehaviour
             {
                 player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);
             }
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.5f);
+            isAttackEnabled = true;
         }
 
     }
