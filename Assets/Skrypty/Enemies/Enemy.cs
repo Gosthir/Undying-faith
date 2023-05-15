@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         if (PositionofEnemy[0] < bigger && PositionofEnemy[0] > lesser)
         {
             animator.SetInteger("AnimState", 0);
-            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || this.animator.GetCurrentAnimatorStateInfo(0).IsName("MoveEnemy"))
+            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 if(isAttackEnabled) { 
                 StartCoroutine(attack());
@@ -91,9 +91,7 @@ public class Enemy : MonoBehaviour
             {
                 player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);
             }
-            if(isDead==false) { 
-                animator.SetInteger("AnimState", 1);
-            }
+            animator.SetInteger("AnimState", 1);
             yield return new WaitForSeconds(1);
             isAttackEnabled = true;
    
