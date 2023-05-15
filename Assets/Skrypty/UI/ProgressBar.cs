@@ -31,7 +31,7 @@ public class ProgressBar : MonoBehaviour
             DeadEnemies = 0;
             SkillPoints++;
             PlayerLevel++;
-            heroknight.currentHealth = heroknight.maxHealth;
+            heroknight.currentHealth += 20;
         }
     }
 
