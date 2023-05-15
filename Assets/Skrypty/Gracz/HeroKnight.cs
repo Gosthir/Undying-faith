@@ -144,6 +144,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Take damage
+        /*
         if (enemy.attackDamageEnemy > 0)
         {
             if (m_isBlocking)
@@ -154,7 +155,7 @@ public class HeroKnight : MonoBehaviour
             {
                 // Health regen or idle state logic here
             }
-        }
+        } */
 
 
 
