@@ -56,6 +56,11 @@ public class Abilities : MonoBehaviour
     public bool meteoryt = false;
     public int meteorytPoints = 0;
     public GameObject meteorPrefab;
+    private Camera mainCamera;
+    public GameObject explosionPrefab; // Prefab of the explosion object
+    public float spawnInterval = 2f; // Interval between spawning objects
+    public float spawnRange = 5f; // Horizontal range of spawning objects
+    private float timer;
 
 
     private void Awake()
@@ -68,6 +73,8 @@ public class Abilities : MonoBehaviour
     {
         heroKnight = GetComponent<HeroKnight>();
         Debug.Log("Odepchniecie timer: " + odepchniecieTimer);
+        mainCamera = Camera.main;
+        timer = spawnInterval;
     }
     
 
@@ -198,6 +205,14 @@ public class Abilities : MonoBehaviour
 
     private void Update()
     {
+        //meteor timer
+        timer -= Time.deltaTime;
+
+        if (timer <= 0f)
+        {
+            timer = spawnInterval;
+        }
+
         Transform AttackPoint = heroKnight.AttackPoint;
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -303,14 +318,43 @@ public class Abilities : MonoBehaviour
         {
             if (meteoryt && meteorytTimer <= 0f)
             {
-
+                SpawnObject();
                 audioManager.PlaySFX(audioManager.Meteor_Explosion);
                 meteorytTimer = meteorytCooldown;
             }
         }
         if (meteorytTimer > 0f)
         {
+            
             meteorytTimer -= Time.deltaTime;
+        }
+
+
+
+
+
+        void SpawnObject()
+        {
+            // Calculate random x position within the spawn range
+            float spawnX = Random.Range(-spawnRange, spawnRange);
+
+            // Calculate the position at the top of the camera's range
+            float spawnY = mainCamera.transform.position.y + mainCamera.orthographicSize;
+
+            // Spawn the meteor at the calculated position
+            Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0f);
+            GameObject meteor = Instantiate(meteorPrefab, spawnPosition, Quaternion.identity);
+
+            // Attach collision handler to the meteor
+            MeteorCollisionHandler collisionHandler = meteor.GetComponent<MeteorCollisionHandler>();
+            if (collisionHandler == null)
+            {
+                collisionHandler = meteor.AddComponent<MeteorCollisionHandler>();
+            }
+            collisionHandler.explosionPrefab = explosionPrefab;
+
+            // Destroy the meteor after a delay
+            Destroy(meteor, 5f);
         }
     }
 }
