@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     public LayerMask enemyLayers;
     public LayerMask attackLayerMask;
     public int maxHealth = 100;
-    int currentHealth;
+    public float currentHealth;
     public int attackDamageEnemy = 4;
     public Animator animator;
     public bool isDead = false;
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         Physics2D.IgnoreLayerCollision(3, 7, true);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (isDead)
             return;

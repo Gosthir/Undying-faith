@@ -37,7 +37,7 @@ public class HeroKnight : MonoBehaviour
     public LayerMask enemyLayers;
     public int AttackDamageHero { get; set; } = 20;
     public int maxHealth = 100;
-    public int currentHealth;
+    public float currentHealth;
     public bool m_blockButtonHeld = false;
     private bool m_isBlocking = false;
     //DMG i Zdrowie
@@ -272,7 +272,6 @@ public class HeroKnight : MonoBehaviour
             foreach (Collider2D enemy in hitEnemies)
             {
                 if(enemy.CompareTag("Enemy")) { 
-                    Debug.Log("We hit " + enemy.name);
                     enemy.GetComponent<Enemy>().TakeDamage(TotalAttackDamage);
                 }
             }
