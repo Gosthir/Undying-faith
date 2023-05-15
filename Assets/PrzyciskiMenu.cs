@@ -10,5 +10,8 @@ public class PrzyciskiMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
+    public void Exit() 
+    {
+        Application.Quit();
+    }
 }
