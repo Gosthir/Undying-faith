@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (Enemys.isDead == false)
             {
-                if (this.ANIME.GetCurrentAnimatorStateInfo(0).IsName("MoveEnemy")) { 
+                if (this.ANIME.GetCurrentAnimatorStateInfo(0).IsName("MoveEnemy") && this.ANIME.GetCurrentAnimatorStateInfo(0).IsName("Idle")){
                     PathFollow();
                 }
             }
