@@ -486,6 +486,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1513694160}
     - target: {fileID: 5965208924067201855, guid: fa07b539b4777a443865e5deef33aa7b, type: 3}
+      propertyPath: ANIME
+      value: 
+      objectReference: {fileID: 1395546829}
+    - target: {fileID: 5965208924067201855, guid: fa07b539b4777a443865e5deef33aa7b, type: 3}
       propertyPath: speed
       value: 500
       objectReference: {fileID: 0}
@@ -3283,6 +3287,11 @@ CanvasRenderer:
 --- !u!4 &1395546823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 816590643243714187, guid: fa07b539b4777a443865e5deef33aa7b, type: 3}
+  m_PrefabInstance: {fileID: 153579113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1395546829 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 816590643243714185, guid: fa07b539b4777a443865e5deef33aa7b, type: 3}
   m_PrefabInstance: {fileID: 153579113}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1416223462

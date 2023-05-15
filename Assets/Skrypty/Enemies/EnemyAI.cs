@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
     public Enemy Enemys;
+    public Animator ANIME;
 
 
 
@@ -44,7 +45,9 @@ public class EnemyAI : MonoBehaviour
         {
             if (Enemys.isDead == false)
             {
-                PathFollow();
+                if (this.ANIME.GetCurrentAnimatorStateInfo(0).IsName("MoveEnemy")) { 
+                    PathFollow();
+                }
             }
         }
     }

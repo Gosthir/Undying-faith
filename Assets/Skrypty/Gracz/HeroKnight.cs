@@ -115,7 +115,7 @@ public class HeroKnight : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal");
 
         // Swap direction of sprite depending on walk direction
-        if (inputX > 0)
+        if (inputX > 0 && m_IsAlive)
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
@@ -125,7 +125,7 @@ public class HeroKnight : MonoBehaviour
 
         }
 
-        else if (inputX < 0)
+        else if (inputX < 0 && m_IsAlive)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
@@ -145,11 +145,11 @@ public class HeroKnight : MonoBehaviour
 
 
         //Hurt
-        if (Input.GetKeyDown("q") && !m_rolling)
+        if (Input.GetKeyDown("q") && !m_rolling && m_IsAlive)
             m_animator.SetTrigger("Hurt");
 
         //Attack
-        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling && m_IsAlive) 
         {
             // Get a random attack audio clip from AudioManager
             int randomClipNumber = Random.Range(1, 4);
