@@ -62,7 +62,7 @@ public class HeroKnight : MonoBehaviour
     void Start()
     {
 
-        initialAttackDamageEnemy = enemy.attackDamageEnemy;
+        initialAttackDamageEnemy = enemy.attackDamageEnemy;  
         abilities = GetComponent<Abilities>();
         maxHealth = 100 + abilities.BonusHealth;
         abilities = GetComponent<Abilities>();
