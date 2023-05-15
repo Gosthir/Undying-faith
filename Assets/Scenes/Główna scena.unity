@@ -1472,6 +1472,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549676139}
   m_CullTransparentMesh: 1
+--- !u!1 &554800988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5112738171702607324, guid: b0043456785cafd479065c9df03c79e3, type: 3}
+  m_PrefabInstance: {fileID: 1441389364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &554800989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7094501577497126487, guid: b0043456785cafd479065c9df03c79e3, type: 3}
+  m_PrefabInstance: {fileID: 1441389364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554800988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a43a2d24096940499991a888d36655c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &554800992 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5112738171702607323, guid: b0043456785cafd479065c9df03c79e3, type: 3}
+  m_PrefabInstance: {fileID: 1441389364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &554800994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554800988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &554800995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554800988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca1e168ae8430a479ce62a6471c9525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 933818470}
+  activateDistance: 100
+  pathUpdateSeconds: 0.5
+  speed: 700
+  nextWaypointDistance: 3
+  jumpNodeHeightRequirement: 0.8
+  jumpModifier: 0.3
+  jumpCheckOffset: 0.1
+  followEnabled: 1
+  jumpEnabled: 1
+  directionLookEnabled: 1
+  Enemys: {fileID: 554800989}
+  ANIME: {fileID: 554800992}
 --- !u!1 &609222696
 GameObject:
   m_ObjectHideFlags: 0
@@ -4659,6 +4733,7 @@ MonoBehaviour:
   jumpEnabled: 1
   directionLookEnabled: 1
   Enemys: {fileID: 1672433597}
+  ANIME: {fileID: 1672433598}
 --- !u!1 &1691493732
 GameObject:
   m_ObjectHideFlags: 0
@@ -5170,7 +5245,39 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1

@@ -144,12 +144,10 @@ public class HeroKnight : MonoBehaviour
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
 
-        //Hurt
-        if (Input.GetKeyDown("q") && !m_rolling && m_IsAlive)
-            m_animator.SetTrigger("Hurt");
+        
 
         //Attack
-        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling && m_IsAlive) 
+        if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling && m_IsAlive) 
         {
             // Get a random attack audio clip from AudioManager
             int randomClipNumber = Random.Range(1, 4);
