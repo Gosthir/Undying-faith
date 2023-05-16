@@ -3,6 +3,7 @@ using System.Collections;
 
 public class HeroKnight : MonoBehaviour
 {
+    public GameObject GameOverScreen;
     private int initialAttackDamageEnemy;
     private Abilities abilities;
     public float m_speed = 4.0f;
@@ -327,7 +328,9 @@ public class HeroKnight : MonoBehaviour
             m_IsAlive = false;
             m_grounded = false;
             m_animator.SetBool("Dead",true);
-        }
+                GameOverScreen.SetActive(true);
+
+            }
         }
     }
 }
