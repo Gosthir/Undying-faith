@@ -11,6 +11,7 @@ public class ProgressBar : MonoBehaviour
     public int DeadEnemies;
     public int PlayerLevel = 1;
     public int SkillPoints = 0;
+    public int EnemiesToLevelUp = 5;
 
     private void Start()
     {
@@ -26,19 +27,20 @@ public class ProgressBar : MonoBehaviour
     {
         // Call UpdateProgressBar every frame to update the progress bar value
         UpdateProgressBar();
-        if(AllEnemies==DeadEnemies)
+        if(EnemiesToLevelUp == DeadEnemies)
         {
+            EnemiesToLevelUp += 2;
             DeadEnemies = 0;
             SkillPoints++;
             PlayerLevel++;
-            heroknight.currentHealth += 20;
+            heroknight.currentHealth += 40;
         }
     }
 
     private void UpdateProgressBar()
     {
         // Calculate the fill amount based on the number of dead enemies and the total number of enemies
-        float fillAmount = (float)DeadEnemies / AllEnemies;
+        float fillAmount = (float)DeadEnemies / EnemiesToLevelUp;
 
         // Set the fill amount of the progress bar image
         ProgressBarImage.fillAmount = fillAmount;
