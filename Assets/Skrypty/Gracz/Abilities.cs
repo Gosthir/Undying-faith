@@ -41,8 +41,6 @@ public class Abilities : MonoBehaviour
     public float duchCooldown;
     public bool formaDucha = false;
     public int formaDuchaPoints = 0;
-    private bool isFormaDuchaActive = false;
-
     public float dashTimer;
     public float dashCooldown;
     public bool Dash = false;

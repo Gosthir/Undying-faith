@@ -9,8 +9,6 @@ public class Attack3_Script : MonoBehaviour
 {
     public HeroKnight playerr;
     public int Dmg_Of_Attack3 = 10;
-    private float timer = 0;
-    private new float animation = 4;
     AudioManager audioManager;
     // Start is called before the first frame update
 

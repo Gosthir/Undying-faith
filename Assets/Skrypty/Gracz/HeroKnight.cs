@@ -7,9 +7,7 @@ public class HeroKnight : MonoBehaviour
     private int initialAttackDamageEnemy;
     private Abilities abilities;
     public float m_speed = 4.0f;
-    [SerializeField] float m_jumpForce = 7.5f;
     [SerializeField] float m_rollForce = 6.0f;
-    [SerializeField] bool m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
     [SerializeField] private HealthBar _healthbar;
     public Enemy enemy;
@@ -213,7 +211,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Move
-        if (!m_rolling && m_IsAlive)
+        if (!m_rolling && m_IsAlive && !m_isBlocking && !this.m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && !this.m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && !this.m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3"))
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
 
         //Set AirSpeed in animator
@@ -297,17 +295,6 @@ public class HeroKnight : MonoBehaviour
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
         }
 
-
-        //Jump
-        if (Input.GetKeyDown("space") && m_grounded && !m_rolling && m_IsAlive)
-        {
-            m_animator.SetTrigger("Jump");
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
-            m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
-            m_groundSensor.Disable(0.2f);
-        }
-
         //Run
        if (Mathf.Abs(inputX) > Mathf.Epsilon)
         {
@@ -327,7 +314,6 @@ public class HeroKnight : MonoBehaviour
         //Healthbar
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
 
-      
         
     }
 
