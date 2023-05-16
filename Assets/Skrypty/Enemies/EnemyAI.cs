@@ -30,7 +30,10 @@ public class EnemyAI : MonoBehaviour
     public Enemy Enemys;
     public Animator ANIME;
 
-
+    public Transform GetTarget()
+    {
+        return target;
+    }
 
     public void Start()
     {

@@ -38,17 +38,20 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            animator.SetInteger("AnimState", 0);
+            StartCoroutine(Die());
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
         animator.SetBool("Dead", true);
         //Die animation
         Debug.Log("dead");
         isDead = true;
         progressBar.DeadEnemies++;
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
@@ -61,12 +64,16 @@ public class Enemy : MonoBehaviour
         if (PositionofEnemy[0] < bigger && PositionofEnemy[0] > lesser)
         {
             animator.SetInteger("AnimState", 0);
-            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || this.animator.GetCurrentAnimatorStateInfo(0).IsName("MoveEnemy") && isDead ==false)
+            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && isDead == false || this.animator.GetCurrentAnimatorStateInfo(0).IsName("MoveEnemy") && isDead ==false)
             {
                 if(isAttackEnabled) { 
                 StartCoroutine(attack());
                 }
             }
+        }
+        if (PositionofEnemy[1] < -5)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -91,8 +98,11 @@ public class Enemy : MonoBehaviour
             {
                 player.GetComponent<HeroKnight>().TakeDamageHero(attackDamageEnemy);
             }
-            animator.SetInteger("AnimState", 1);
-            yield return new WaitForSeconds(1);
+            if (isDead == false)
+            {
+                animator.SetInteger("AnimState", 1);
+            }
+                yield return new WaitForSeconds(1);
             isAttackEnabled = true;
    
         }

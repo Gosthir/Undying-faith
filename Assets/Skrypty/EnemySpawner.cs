@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(interval);
-            GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5f), Random.Range(-6f, 6f), 0f), Quaternion.identity);
+            GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(0, 5f), Random.Range(0f, 6f), 0f), Quaternion.identity);
         }
     }
 }

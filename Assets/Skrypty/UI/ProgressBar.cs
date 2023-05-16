@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ProgressBar : MonoBehaviour
@@ -34,6 +35,10 @@ public class ProgressBar : MonoBehaviour
             SkillPoints++;
             PlayerLevel++;
             heroknight.currentHealth += 40;
+        }
+        if(PlayerLevel == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
