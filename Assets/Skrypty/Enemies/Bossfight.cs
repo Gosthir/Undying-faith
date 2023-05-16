@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -51,7 +52,7 @@ public class Bossfight : MonoBehaviour
     }
     private void Boss_Attack()
     {
-        Instantiate(Laser, new Vector3(0, 0, 0), transform.rotation);
+        Instantiate(Laser, new Vector3(0, 0, 0), quaternion.EulerXYZ(90,90,90));
 
     }
 }
