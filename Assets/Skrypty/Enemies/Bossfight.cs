@@ -15,20 +15,9 @@ public class Bossfight : MonoBehaviour
     private int NumberOfAttack = 4;
     public HeroKnight player;
     public GameObject Laser;
-    // Start is called before the first frame update
-    void Start()
-    {
-    
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("p"))
-        {
-            B_animator.SetTrigger("Attack3");
-            Boss_Attack();
-        }
         switch (NumberOfAttack)
         {
             case 0:

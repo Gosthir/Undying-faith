@@ -36,7 +36,7 @@ public class ProgressBar : MonoBehaviour
             PlayerLevel++;
             heroknight.currentHealth += 40;
         }
-        if(PlayerLevel == 3)
+        if(PlayerLevel == 5)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

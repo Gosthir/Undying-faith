@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
             if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && isDead == false || this.animator.GetCurrentAnimatorStateInfo(0).IsName("MoveEnemy") && isDead ==false)
             {
                 if(isAttackEnabled) { 
-                StartCoroutine(attack());
+                StartCoroutine(Attack());
                 }
             }
         }
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator attack()
+    IEnumerator Attack()
     {
         if (isAttackEnabled)
         {

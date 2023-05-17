@@ -1,27 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Attack3_Script : MonoBehaviour
 {
     public HeroKnight playerr;
     public int Dmg_Of_Attack3 = 10;
-    AudioManager audioManager;
     // Start is called before the first frame update
-
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
 
     void Start()
     {
-        StartCoroutine(bossattack3());
+        StartCoroutine(Bossattack3());
     }
-    IEnumerator bossattack3()
+    IEnumerator Bossattack3()
     {
         yield return new WaitForSeconds(0.5f);
         playerr = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroKnight>();
@@ -32,19 +22,6 @@ public class Attack3_Script : MonoBehaviour
             {
                 playerr.GetComponent<HeroKnight>().TakeDamageHero(Dmg_Of_Attack3);
 
-
-    int randomClipNumber = Random.Range(1, 3);
-    AudioClip attackClip = null;
-
-                switch (randomClipNumber)
-                {
-                    case 1:
-                        attackClip = audioManager.Atak1;
-                        break;
-                    case 2:
-                        attackClip = audioManager.Atak2;
-                        break;
-                }
             }
         }
     Destroy(gameObject);
