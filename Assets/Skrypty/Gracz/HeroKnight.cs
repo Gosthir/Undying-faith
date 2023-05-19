@@ -3,10 +3,13 @@ using System.Collections;
 
 public class HeroKnight : MonoBehaviour
 {
+    public float raycastDistance = 0.6f; //groundcheck
+    private LayerMask groundLayer;
     public GameObject GameOverScreen;
     private int initialAttackDamageEnemy;
     private Abilities abilities;
     public float m_speed = 4.0f;
+    [SerializeField] private float m_jumpForce = 7.5f;
     [SerializeField] float m_rollForce = 6.0f;
     [SerializeField] GameObject m_slideDust;
     [SerializeField] private HealthBar _healthbar;
@@ -20,7 +23,8 @@ public class HeroKnight : MonoBehaviour
     private Sensor_HeroKnight m_wallSensorL1;
     private Sensor_HeroKnight m_wallSensorL2;
     private bool m_isWallSliding = false;
-    private bool m_grounded = false;
+    public bool OnGround = false;
+    public bool m_grounded = false;
     private bool m_rolling = false;
     public int m_facingDirection = 1;
     private int m_currentAttack = 0;
@@ -39,6 +43,8 @@ public class HeroKnight : MonoBehaviour
     public float currentHealth;
     public bool m_blockButtonHeld = false;
     private bool m_isBlocking = false;
+    private bool CanBlock = true;
+    private bool CanAttack = true;
     //DMG i Zdrowie
     public int TotalAttackDamage
     {
@@ -60,7 +66,7 @@ public class HeroKnight : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        groundLayer = LayerMask.GetMask("Ground");
         initialAttackDamageEnemy = enemy.attackDamageEnemy;  
         abilities = GetComponent<Abilities>();
         maxHealth = 100 + abilities.BonusHealth;
@@ -104,12 +110,37 @@ public class HeroKnight : MonoBehaviour
             
         }
     }
+
+
     // Update is called once per frame
     void Update()
     {
-        // Block
-        if (Input.GetMouseButtonDown(1) && !m_rolling && m_IsAlive)
+        bool grounded = IsGrounded();
+        OnGround = grounded;
+
+        if (grounded)
         {
+            Debug.Log("Grounded");
+        }
+        else
+        {
+            Debug.Log("Not Grounded");
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (OnGround && !m_rolling && m_IsAlive)
+            {
+                m_body2d.AddForce(new Vector2(0f, m_jumpForce), ForceMode2D.Impulse);
+            }
+        }
+
+
+        // Block
+        if (Input.GetMouseButtonDown(1) && !m_rolling && m_IsAlive && CanBlock)
+        {
+            CanAttack = false;
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
             m_isBlocking = true;
@@ -121,12 +152,13 @@ public class HeroKnight : MonoBehaviour
                 Enemy enemy = enemyObj.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    enemy.attackDamageEnemy = Mathf.Max(initialAttackDamageEnemy - 15, 0);
+                    enemy.attackDamageEnemy = Mathf.Max(initialAttackDamageEnemy - 6, 0);
                 }
             }
         }
         else if (Input.GetMouseButtonUp(1) && m_IsAlive)
         {
+            CanAttack = true;
             m_animator.SetBool("IdleBlock", false);
             m_isBlocking = false;
 
@@ -141,23 +173,6 @@ public class HeroKnight : MonoBehaviour
                 }
             }
         }
-
-        // Take damage
-        /*
-        if (enemy.attackDamageEnemy > 0)
-        {
-            if (m_isBlocking)
-            {
-                enemy.attackDamageEnemy -= 1;
-            }
-            else
-            {
-                // Health regen or idle state logic here
-            }
-        } */
-
-
-
 
 
         // Increase timer that controls attack combo
@@ -221,7 +236,7 @@ public class HeroKnight : MonoBehaviour
         
 
         //Attack
-        if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling && m_IsAlive) 
+        if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling && m_IsAlive && CanAttack) 
         {
             // Get a random attack audio clip from AudioManager
             int randomClipNumber = Random.Range(1, 4);
@@ -258,6 +273,10 @@ public class HeroKnight : MonoBehaviour
 
             // Reset timer
             m_timeSinceAttack = 0.0f;
+
+            m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+
+
         }
 
         void Attack()
@@ -280,7 +299,7 @@ public class HeroKnight : MonoBehaviour
                 bosss.GetComponent<Boss>().TakeDamage(TotalAttackDamage);
                 }
             }
-    }
+        }   
         
         
 
@@ -317,12 +336,31 @@ public class HeroKnight : MonoBehaviour
         
     }
 
-     internal void TakeDamageHero(int damage)
+
+    private bool IsGrounded()
+    {
+        Debug.DrawRay(transform.position, Vector2.down * raycastDistance, Color.red, 0.1f);
+        Vector2 position = transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, raycastDistance, groundLayer);
+        bool isGrounded = hit.collider != null;
+        if (!isGrounded)
+            return false; // Didn't hit anything.
+        Debug.Log($"We hit: {hit.collider.name} who had a tag of {hit.collider.gameObject.layer}", hit.collider.gameObject);
+        return true;
+
+    }
+    
+    
+    internal void TakeDamageHero(int damage)
     {
         if(m_IsAlive){ 
         currentHealth -= damage;
         //HURT HERE
-        m_animator.SetTrigger("Hurt");
+        if(!m_isBlocking)
+            {
+                m_animator.SetTrigger("Hurt");
+            }
+        
         if (currentHealth <= 0)
         {
             m_IsAlive = false;

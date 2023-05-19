@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Abilities : MonoBehaviour
 {
+    public Enemy enemy;
     private HeroKnight heroKnight;
     private AudioManager audioManager;
 
@@ -24,7 +25,7 @@ public class Abilities : MonoBehaviour
 
 
     public float odepchniecieTimer = 0f;
-    public float odepchniecieCooldown; // Cooldown duration in seconds
+    public float odepchniecieCooldown;
     public bool odepchniecie = false;
     public int odepchnieciePoints = 0;
     public int odepchnięcieDMG;
@@ -119,15 +120,14 @@ public class Abilities : MonoBehaviour
 
 
     // FORMA DUCHA
-    private IEnumerator DisableEnemyAttacksForSeconds(float seconds)
+    public IEnumerator DisableEnemyAttacksForSeconds(float seconds)
     {
         // Find all sprites with an "Enemy" script
         Enemy[] enemies = FindObjectsOfType<Enemy>();
 
-        // Disable attacks for all "Enemy" sprites
         foreach (Enemy enemy in enemies)
         {
-            enemy.isAttackEnabled = false;
+            enemy.canAttack = false;
         }
 
         // Set transparency of hero to 25%
@@ -143,10 +143,9 @@ public class Abilities : MonoBehaviour
         spriteColor.a = 1f;
         spriteRenderer.color = spriteColor;
 
-        // Enable attacks for all "Enemy" sprites
         foreach (Enemy enemy in enemies)
         {
-            enemy.isAttackEnabled = true;
+            enemy.canAttack = true;
         }
     }
     //BOSKI OGIEN
@@ -267,7 +266,7 @@ public class Abilities : MonoBehaviour
             if(formaDucha && duchTimer <= 0f)
             {
                 audioManager.PlaySFX(audioManager.Duch);
-                StartCoroutine(DisableEnemyAttacksForSeconds(2f + formaDuchaPoints));
+                StartCoroutine(this.DisableEnemyAttacksForSeconds(2f + formaDuchaPoints));
                 duchTimer = duchCooldown;
             }
 

@@ -8,6 +8,7 @@ public class ProgressBar : MonoBehaviour
 {
     public HeroKnight heroknight;
     public Image ProgressBarImage;
+    public int DeadEnemiesDisplay = 0;
     public int AllEnemies;
     public int DeadEnemies;
     public int PlayerLevel = 1;
@@ -28,17 +29,13 @@ public class ProgressBar : MonoBehaviour
     {
         // Call UpdateProgressBar every frame to update the progress bar value
         UpdateProgressBar();
-        if(EnemiesToLevelUp == DeadEnemies)
+        if(EnemiesToLevelUp <= DeadEnemies)
         {
+            DeadEnemies = DeadEnemies-EnemiesToLevelUp;
             EnemiesToLevelUp += 2;
-            DeadEnemies = 0;
             SkillPoints++;
             PlayerLevel++;
             heroknight.currentHealth += 40;
-        }
-        if(PlayerLevel == 5)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

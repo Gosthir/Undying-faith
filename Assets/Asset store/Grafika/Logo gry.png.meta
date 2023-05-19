@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 51086e16a7fd9a94197856d282fb7c6c
+guid: 57ff6139777d7534b92132013c4c253a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -115,133 +115,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: lasery_0
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 874
-        width: 409
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91b1281d5a80ef74884ca7528b3eac84
-      internalID: 868394480
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lasery_1
-      rect:
-        serializedVersion: 2
-        x: 498
-        y: 874
-        width: 409
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e54738a307869c4ba6c62fd18eac7a1
-      internalID: -1697915428
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lasery_2
-      rect:
-        serializedVersion: 2
-        x: 941
-        y: 876
-        width: 409
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f45782df8e9fb2545b6e0384bda3596a
-      internalID: 1311791689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lasery_3
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 763
-        width: 409
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb16284ecc4f6c243b2abfa40637ce3f
-      internalID: -848774473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lasery_4
-      rect:
-        serializedVersion: 2
-        x: 493
-        y: 757
-        width: 409
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 203a6ca5b7663cc46a38b09ba483f609
-      internalID: -210014331
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lasery_5
-      rect:
-        serializedVersion: 2
-        x: 937
-        y: 761
-        width: 409
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8320d42ffc601624b951cebbb024d423
-      internalID: -1600017285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -252,13 +126,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      lasery_3: -848774473
-      lasery_0: 868394480
-      lasery_1: -1697915428
-      lasery_5: -1600017285
-      lasery_4: -210014331
-      lasery_2: 1311791689
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

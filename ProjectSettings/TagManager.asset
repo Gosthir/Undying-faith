@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Boss
   - Audio
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Background
   - Forground
   - Floor
-  - 
+  - Ground
   - 
   - 
   - 

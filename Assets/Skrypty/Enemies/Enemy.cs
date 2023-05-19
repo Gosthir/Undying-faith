@@ -6,6 +6,7 @@ using UnityEngine.PlayerLoop;
 
 public class Enemy : MonoBehaviour
 {
+    public bool canAttack = true;
     public bool isAttackEnabled = true;
     public HeroKnight player;
     public ProgressBar progressBar;
@@ -47,9 +48,9 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("Dead", true);
         //Die animation
-        Debug.Log("dead");
         isDead = true;
         progressBar.DeadEnemies++;
+        progressBar.DeadEnemiesDisplay++;
         yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }
@@ -79,7 +80,8 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Attack()
     {
-        if (isAttackEnabled)
+        bool initialAttackEnabledState = isAttackEnabled;
+        if (isAttackEnabled && canAttack)
         {
             isAttackEnabled = false;
             animator.SetTrigger("Isdoingdmg");
@@ -102,10 +104,8 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetInteger("AnimState", 1);
             }
-                yield return new WaitForSeconds(1);
-            isAttackEnabled = true;
-   
+            yield return new WaitForSeconds(1);
         }
-
+        isAttackEnabled = initialAttackEnabledState;
     }
 }
