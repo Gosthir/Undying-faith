@@ -372,6 +372,10 @@ PrefabInstance:
       propertyPath: nextWaypointDistance
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5965208924067201855, guid: fa07b539b4777a443865e5deef33aa7b, type: 3}
+      propertyPath: jumpNodeHeightRequirement
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa07b539b4777a443865e5deef33aa7b, type: 3}
 --- !u!1 &168890574
@@ -722,7 +726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269240981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.380052, y: 0.16433921, z: -9}
+  m_LocalPosition: {x: -4.380053, y: 0.16431394, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3009,8 +3013,6 @@ GameObject:
   - component: {fileID: 1513694161}
   - component: {fileID: 1513694166}
   - component: {fileID: 1513694165}
-  - component: {fileID: 1513694164}
-  - component: {fileID: 1513694163}
   - component: {fileID: 1513694162}
   - component: {fileID: 1513694167}
   - component: {fileID: 1513694168}
@@ -3170,36 +3172,6 @@ MonoBehaviour:
   ability: {fileID: 933818466}
   OgienCooldown: {fileID: 1276749092}
   OgienButton: {fileID: 369924200}
---- !u!114 &1513694163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513694154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d678428f52c9ed64d9b8f41f95e68afd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ability: {fileID: 933818466}
-  MeteorCooldown: {fileID: 0}
-  MeteorButton: {fileID: 0}
---- !u!114 &1513694164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513694154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f45434788b02684893807d61d3028c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ability: {fileID: 933818466}
-  LaserCooldown: {fileID: 0}
-  LaserButton: {fileID: 0}
 --- !u!114 &1513694165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4362,6 +4334,10 @@ PrefabInstance:
       propertyPath: Atak3
       value: 
       objectReference: {fileID: 8300000, guid: e0fc7c6ded96da143bacd636850d4303, type: 3}
+    - target: {fileID: 1049201242283619331, guid: 8772fb04af3e0f0419c1fb4378a79ac3, type: 3}
+      propertyPath: GameMusic
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1049201242283619332, guid: 8772fb04af3e0f0419c1fb4378a79ac3, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4426,6 +4402,102 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverScreen: {fileID: 2097504283}
+--- !u!82 &1049201242661306251
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049201242661306249}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e438767b030729f498536acd093374ab, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &3066123925408366935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4682,6 +4754,10 @@ PrefabInstance:
     - target: {fileID: 2070915170, guid: 5d1ef0cda930df949aa66b8945982844, type: 3}
       propertyPath: formaDucha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070915170, guid: 5d1ef0cda930df949aa66b8945982844, type: 3}
+      propertyPath: BurnDuration
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2070915170, guid: 5d1ef0cda930df949aa66b8945982844, type: 3}
       propertyPath: dashCooldown

@@ -231,7 +231,7 @@ public class Abilities : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (odepchniecie && odepchniecieTimer <= 0f)
+            if (heroKnight.m_IsAlive && odepchniecie && odepchniecieTimer <= 0f)
             {
                 audioManager.PlaySFX(audioManager.Odepchniecie);
                 PushEnemiesAway(transform, 3f, 9f);
@@ -245,7 +245,7 @@ public class Abilities : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (boskiOgien && ogienTimer <= 0f)
+            if (heroKnight.m_IsAlive && boskiOgien && ogienTimer <= 0f)
             {
                 // Get reference to attack point and enemy layers from heroKnight script
                 AttackPoint = heroKnight.AttackPoint;
